@@ -42,10 +42,10 @@ const HowItWorks = () => {
   };
 
   return (
-    <section className="p-0 m-0 sm: pb-20">
-      <div className="sm:mb-0 lg:mb-40" />
-      <div className="xl:flex flex-row justify-evenly ">
-        <div className="flex xl:flex items-center flex-row justify-center basis-1/2 mt-72 ">
+    <section className=" sm: pt-32">
+      <div className=" sm:mb-0 lg:mb-40" />
+      <div className=" border border-solid xl:flex flex-row justify-evenly ">
+        <div className="flex mt-0 xl:flex items-center flex-row justify-center basis-1/2 ">
           <Image
             src="/rightArrow.svg"
             alt="arrow"
