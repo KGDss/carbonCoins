@@ -1,9 +1,23 @@
 "use client";
-import React from "react";
-import { motion, useScroll } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const Landing = () => {
-  const { scrollY } = useScroll();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const rotationFactor = 0.35; //
   return (
     <main className="">
       <div className="w-full pt-72 sm:pt-84">
@@ -23,9 +37,10 @@ const Landing = () => {
               height={600}
               width={600}
               style={{
-                rotate: scrollY,
+                transform: `rotate(${scrollY * rotationFactor}deg)`, // Rotate based on scroll position
               }}
             />
+
             <div className="flex justify-center text-4xl sm:text-6xl md:text-7xl mb-8 lg:text-7xl  xl:text-8xl 2xl:mb-0 font-bold absolute">
               HOW IT WORKS
             </div>
