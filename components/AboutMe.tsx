@@ -93,7 +93,7 @@ const AboutMe = () => {
         }}
         onClick={() => {
           setMustFinish(true);
-          setDuration(SLOW);
+          setDuration((prevDuration) => (prevDuration === SLOW ? FAST : SLOW));
         }}
       >
         {[...imgCarousel, ...imgCarousel].map((item, index) => (
