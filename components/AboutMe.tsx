@@ -10,7 +10,11 @@ const AboutMe = () => {
   let [ref, { width }] = useMeasure();
   const xTranslation = useMotionValue(0);
   const [gapSize, setGapSize] = useState(64); // Default gap size
-
+  const FAST = 25;
+  const SLOW = 75;
+  const [duration, setDuration] = useState(FAST);
+  const [mustFinish, setMustFinish] = useState(false);
+  const [rerender, setRerender] = useState(false);
   // Dynamically adjust gap size based on screen width
   useEffect(() => {
     const updateGapSize = () => {
@@ -34,14 +38,29 @@ const AboutMe = () => {
   useEffect(() => {
     let controls;
     let finalPosition = -width / 2 - gapSize; // Use gapSize from state
-    controls = animate(xTranslation, [0, finalPosition], {
-      ease: "linear",
-      duration: 25,
-      repeat: Infinity,
-      repeatType: "loop",
-      repeatDelay: 0,
-    });
-  }, [xTranslation, width, gapSize]); // Add gapSize as a dependency
+
+    if (mustFinish) {
+      controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
+        ease: "linear",
+        duration: duration * (1 - xTranslation.get() / finalPosition),
+        onComplete: () => {
+          setMustFinish(false);
+          setRerender(!rerender);
+        },
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 0,
+      });
+    } else {
+      controls = animate(xTranslation, [0, finalPosition], {
+        ease: "linear",
+        duration: duration,
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 0,
+      });
+    }
+  }, [xTranslation, width, gapSize, duration, rerender, mustFinish]); // Add gapSize as a dependency
 
   return (
     <section className="mt-40 lg:mt-80">
@@ -67,6 +86,14 @@ const AboutMe = () => {
         className="bg-white  absolute left-0 flex pr-20 gap-7 mt-16 sm:gap-10 md:mt-20 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-40"
         ref={ref}
         style={{ x: xTranslation }}
+        onHoverStart={() => {
+          setMustFinish(true);
+          setDuration(SLOW);
+        }}
+        onHoverEnd={() => {
+          setMustFinish(true);
+          setDuration(FAST);
+        }}
       >
         {[...imgCarousel, ...imgCarousel].map((item, index) => (
           <Card image={item} key={index} />
