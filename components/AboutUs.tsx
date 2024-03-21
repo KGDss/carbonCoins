@@ -60,7 +60,7 @@ const AboutMe = () => {
   }, [xTranslation, width, gapSize, duration, rerender, mustFinish]); // Add gapSize as a dependency
 
   return (
-    <section className="mt-40 lg:mt-80 object-contain border">
+    <section className="mt-40 lg:mt-80 object-contain">
       <header className="flex justify-center font-bold text-4xl sm:text-6xl md:text-7xl lg:text-7xl  xl:text-8xl ">
         ABOUT US
       </header>
