@@ -47,9 +47,6 @@ const AboutMe = () => {
           setMustFinish(false);
           setRerender(!rerender);
         },
-        repeat: Infinity,
-        repeatType: "loop",
-        repeatDelay: 0,
       });
     } else {
       controls = animate(xTranslation, [0, finalPosition], {
@@ -96,7 +93,7 @@ const AboutMe = () => {
         }}
       >
         {[...imgCarousel, ...imgCarousel].map((item, index) => (
-          <Card image={item} key={index} />
+          <Card image={item.path} key={index} link={item.link} />
         ))}
       </motion.div>
     </section>
