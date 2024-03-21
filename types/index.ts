@@ -9,3 +9,7 @@ export interface CustomButtonProps {
   rightIcon?: string;
   isDisabled?: boolean;
 }
+
+export interface CardProps {
+  image: string;
+}
