@@ -42,7 +42,7 @@ const config: Config = {
             lineHeight: "1rem",
           },
         ],
-        "3xs": "0.3rem",
+        "3xs": "0.45rem",
       },
     },
   },
