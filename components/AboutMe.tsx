@@ -19,12 +19,12 @@ const AboutMe = () => {
   useEffect(() => {
     const updateGapSize = () => {
       const screenWidth = window.innerWidth;
-      if (screenWidth >= 1536) setGapSize(80);
-      else if (screenWidth >= 1280) setGapSize(64);
-      else if (screenWidth >= 1024) setGapSize(48);
-      else if (screenWidth >= 768) setGapSize(32);
-      else if (screenWidth >= 640) setGapSize(20);
-      else setGapSize(14);
+      if (screenWidth >= 1536) setGapSize(40);
+      else if (screenWidth >= 1280) setGapSize(24);
+      else if (screenWidth >= 1024) setGapSize(8);
+      else if (screenWidth >= 768) setGapSize(-7);
+      else if (screenWidth >= 640) setGapSize(-20);
+      else setGapSize(-26);
     };
 
     // Call once and set up resize event listener
