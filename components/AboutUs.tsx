@@ -60,7 +60,7 @@ const AboutMe = () => {
   }, [xTranslation, width, gapSize, duration, rerender, mustFinish]); // Add gapSize as a dependency
 
   return (
-    <section className="mt-40 lg:mt-80">
+    <section className="mt-40 lg:mt-80 object-contain border">
       <header className="flex justify-center font-bold text-4xl sm:text-6xl md:text-7xl lg:text-7xl  xl:text-8xl ">
         ABOUT US
       </header>
@@ -78,9 +78,8 @@ const AboutMe = () => {
           LEARN MORE
         </button>
       </div>
-
       <motion.div
-        className="bg-white  absolute left-0 flex pr-20 gap-7 mt-16 sm:gap-10 md:mt-20 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-40"
+        className="bg-white w-[220vw] left-0 flex pr-20 gap-7 mt-16 sm:gap-10 md:mt-20 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-40"
         ref={ref}
         style={{ x: xTranslation }}
         onHoverStart={() => {
