@@ -44,13 +44,13 @@ const AboutMe = () => {
   }, [xTranslation, width, gapSize]); // Add gapSize as a dependency
 
   return (
-    <section className="mt-40 lg:mt-80 border border-solid">
+    <section className="mt-40 lg:mt-80">
       <header className="flex justify-center font-bold text-4xl sm:text-6xl md:text-7xl lg:text-7xl  xl:text-8xl ">
         ABOUT US
       </header>
 
       <div className="flex flex-col space-y-8 justify-center items-center">
-        <span className="border border-solid text-center justify-center w-11/12  mt-10 ">
+        <span className="text-center justify-center w-11/12  mt-10 ">
           I am a 3rd year Digital Engineering studenta at Prince of Songkla
           Univerysity, Phuket Campus working on this Carbon Coins application
           hoping it would be able to help fight climate change !!
@@ -64,7 +64,7 @@ const AboutMe = () => {
       </div>
 
       <motion.div
-        className="border w-screen absolute left-0 flex pr-20 gap-7 mt-16 sm:gap-10 md:mt-20 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-40"
+        className="bg-white  absolute left-0 flex pr-20 gap-7 mt-16 sm:gap-10 md:mt-20 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-40"
         ref={ref}
         style={{ x: xTranslation }}
       >
