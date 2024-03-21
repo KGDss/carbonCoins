@@ -91,6 +91,10 @@ const AboutMe = () => {
           setMustFinish(true);
           setDuration(FAST);
         }}
+        onClick={() => {
+          setMustFinish(true);
+          setDuration(SLOW);
+        }}
       >
         {[...imgCarousel, ...imgCarousel].map((item, index) => (
           <Card image={item.path} key={index} link={item.link} />

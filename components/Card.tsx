@@ -10,6 +10,9 @@ const Card: React.FC<CardProps> = ({ image, link }) => {
       className="borde relative overflow-hidden rounded-xl min-w-[100px] md:min-w-[150px] lg:min-w-[200px]  flex justify-center items-center"
       onHoverStart={() => setShowOverlay(true)}
       onHoverEnd={() => setShowOverlay(false)}
+      onClick={() => {
+        setShowOverlay(!showOverlay);
+      }}
     >
       <AnimatePresence>
         {showOverlay && (
