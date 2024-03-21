@@ -67,7 +67,7 @@ const AboutMe = () => {
 
       <div className="flex flex-col space-y-8 justify-center items-center">
         <span className="text-center justify-center w-11/12  mt-10 ">
-          I am a 3rd year Digital Engineering studenta at Prince of Songkla
+          We are 3rd year Digital Engineering students at Prince of Songkla
           Univerysity, Phuket Campus working on this Carbon Coins application
           hoping it would be able to help fight climate change !!
         </span>
