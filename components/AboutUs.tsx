@@ -79,7 +79,7 @@ const AboutMe = () => {
         </button>
       </div>
       <motion.div
-        className="bg-white w-[350vw]  md:w-[220vw] left-0 flex pr-20 gap-7 mt-16 sm:gap-10 md:mt-20 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-40"
+        className="bg-white w-[220vw] left-0 flex pr-20 gap-7 mt-16 sm:gap-10 md:mt-20 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-40"
         ref={ref}
         style={{ x: xTranslation }}
         onHoverStart={() => {
