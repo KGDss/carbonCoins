@@ -40,7 +40,10 @@ const Landing = () => {
             }}
           />
 
-          <div className="flex justify-center text-4xl sm:text-6xl md:text-7xl mb-8 lg:text-7xl  xl:text-8xl 2xl:mb-0 font-bold absolute">
+          <div
+            id="howitworks"
+            className="flex justify-center text-4xl sm:text-6xl md:text-7xl mb-8 lg:text-7xl  xl:text-8xl 2xl:mb-0 font-bold absolute"
+          >
             HOW IT WORKS
           </div>
         </div>

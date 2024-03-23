@@ -34,7 +34,10 @@ const NavBar = () => {
   return (
     <>
       <header className="flex justify-between">
-        <div className="w-5 sm:w-4/12 md:w-fit flex justify-center items-end min-w-48">
+        <div
+          id="home"
+          className="w-5 sm:w-4/12 md:w-fit flex justify-center items-end min-w-48"
+        >
           <Image
             src="/logoName.svg"
             alt="logoname"
@@ -51,8 +54,8 @@ const NavBar = () => {
               className="text-base lg:pr-8 xl:pr-11 2xl:pr-14 hover:text-hover-green"
             >
               <h3>
-                <Link key={link.title} href={link.url}>
-                  {link.title}
+                <Link key={link.title} href={`#${link.id}`}>
+                  <span>{link.title}</span>
                 </Link>
               </h3>
             </div>

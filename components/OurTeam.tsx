@@ -4,7 +4,10 @@ import React from "react";
 const OurTeam = () => {
   return (
     <section className="mt-20 lg:mt-60 object-contain">
-      <div className="flex justify-center font-bold text-4xl sm:text-6xl md:text-7xl lg:text-7xl  xl:text-8xl ">
+      <div
+        id="contactus"
+        className="flex justify-center font-bold text-4xl sm:text-6xl md:text-7xl lg:text-7xl  xl:text-8xl "
+      >
         OUR TEAM
       </div>
       <div className="flex items-center justify-center ">

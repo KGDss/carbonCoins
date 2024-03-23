@@ -1,8 +1,8 @@
 export const navBarLinks = [
-  { title: "HOME", url: "/" },
-  { title: "HOW IT WORKS", url: "/" },
-  { title: "ABOUT US", url: "/" },
-  { title: "CONTACT US", url: "/" },
+  { title: "HOME", url: "/", id: "home" },
+  { title: "HOW IT WORKS", url: "/", id: "howitworks" },
+  { title: "ABOUT US", url: "/", id: "aboutus" },
+  { title: "CONTACT US", url: "/", id: "contactus" },
 ];
 
 export const languages = [
