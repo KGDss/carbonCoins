@@ -43,7 +43,7 @@ export const textSlide = [
 
 export const imgCarousel = [
   { path: "/PSU.svg", link: "https://en.psu.ac.th/" },
-  { path: "/COC.svg", link: "https://www.computing.psu.ac.th/en/" },
+  { path: "/CoC.svg", link: "https://www.computing.psu.ac.th/en/" },
   { path: "/AiiLab.svg", link: "https://www.aiilab.tech/" },
   { path: "/BLOCK.svg", link: "https://block.phuket.psu.ac.th/" },
   { path: "/TGO.svg", link: "https://www.tgo.or.th/2023/index.php/en/" },

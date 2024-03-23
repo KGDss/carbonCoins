@@ -36,7 +36,7 @@ const NavBar = () => {
       <header className="flex justify-between">
         <div className="w-5 sm:w-4/12 md:w-fit flex justify-center items-end min-w-48">
           <Image
-            src="/logoname.svg"
+            src="/logoName.svg"
             alt="logoname"
             width={300}
             height={20}
