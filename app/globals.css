@@ -18,11 +18,11 @@
 
 body {
   color: white;
-  background-color: #112012; 
+  background-color: #112012;
 }
 
 .mobile-navbar {
-  @apply text-xs sm:text-sm md:text-base lg:hidden flex flex-col h-screen border border-solid fixed right-0
+  @apply text-xs sm:text-sm md:text-base lg:hidden flex flex-col h-screen border border-solid fixed right-0;
 }
 
 @layer utilities {
