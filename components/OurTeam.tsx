@@ -17,7 +17,6 @@ const OurTeam = () => {
           </span>
         </div>
       </div>
-
       <div className="flex flex-row justify-between right-0">
         <Image
           src="/nicki1.svg"
@@ -33,6 +32,17 @@ const OurTeam = () => {
           width={0}
           style={{ width: "46vw", height: "auto" }}
         />
+      </div>
+      <div className="flex justify-center items-center">
+        <div className="absolute">
+          <Image
+            src="/logo.svg"
+            alt="logo"
+            height={0}
+            width={0}
+            style={{ width: "4vw", height: "auto" }}
+          />
+        </div>
       </div>
     </section>
   );
