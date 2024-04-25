@@ -20,7 +20,7 @@ const Landing = () => {
   const rotationFactor = 0.35; //
   return (
     <main className="w-full pt-72 sm:pt-84">
-      <div className="w-full flex-col  ">
+      <div className="w-full flex-col">
         <h1 className="flex justify-center text-4xl sm:text-6xl md:text-7xl lg:text-7xl  xl:text-8xl font-bold">
           CARBON COINS
         </h1>

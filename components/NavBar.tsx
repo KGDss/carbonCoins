@@ -5,13 +5,31 @@ import { Listbox, Transition } from "@headlessui/react";
 import { navBarLinks, languages } from "@/constants";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { Login } from ".";
+// import { useRouter } from "next/navigation";
 
 const NavBar = () => {
   const [selectedLang, SetselectedLang] = useState(languages[0]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  // const router = useRouter();
+  const scrollingEnable = (state: boolean) => {
+    const htmlElement = document.querySelector("html");
+    if (htmlElement) {
+      htmlElement.style.overflow = state ? "visible" : "hidden";
+    } else {
+      console.error("HTML element not found");
+    }
+  };
   const toggelMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    scrollingEnable(isMenuOpen);
   };
+  const toggleLogin = () => {
+    setIsLogin(!isLogin);
+    scrollingEnable(isLogin);
+  };
+
   const navContainer = {
     visible: {
       //x: 0,
@@ -33,6 +51,49 @@ const NavBar = () => {
 
   return (
     <>
+      {/* <div className={``}>
+        <Login />
+      </div> */}
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav
+            //have mobile-navbar here
+            className="text-xs sm:text-sm md:text-base fixed overflow-y-hidden flex flex-col bg-gray-950/80 items-center lg:hidden h-screen w-screen z-20 "
+            initial="hidden"
+            animate={isMenuOpen ? "visible" : "hidden"}
+            exit="hidden"
+            variants={navContainer}
+          >
+            <div className="mt-5 text-xl text-hover-green">Menu</div>
+            {navBarLinks.map((link) => (
+              <div
+                key={link.title}
+                className="py-4 hover:text-hover-green"
+                onClick={toggelMenu}
+              >
+                <h3>
+                  <Link key={link.title} href={`#${link.id}`}>
+                    {link.title}
+                  </Link>
+                </h3>
+              </div>
+            ))}
+            <div className="lg:pl-2 xl:pl-3 2xl:pl-4 pt-4">
+              <h3>
+                <Link href="/" className="hover:text-hover-green">
+                  LOGIN{" "}
+                </Link>
+                |
+                <Link href="/" className="hover:text-hover-green">
+                  {" "}
+                  REGISTER
+                </Link>
+              </h3>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
       <header className="flex justify-between">
         <div
           id="home"
@@ -62,7 +123,7 @@ const NavBar = () => {
           ))}
           <div className="text-base lg:pl-2 xl:pl-3 2xl:pl-4">
             <h3>
-              <Link href="/" className="hover:text-hover-green">
+              <Link href="/token" className="hover:text-hover-green">
                 LOGIN{" "}
               </Link>
               |
@@ -73,11 +134,7 @@ const NavBar = () => {
             </h3>
           </div>
         </nav>
-        <div
-          className={`flex justify-center items-end ${
-            isMenuOpen ? "pr-32 sm:pr-36 md:pr-40" : "pr-5"
-          }`}
-        >
+        <div className={`flex justify-center items-end pr-5 sm:pr-9 md:pr-12`}>
           <div className="border-solid border rounded-3xl pr-3 pl-4 py-1 ">
             <Listbox value={selectedLang} onChange={SetselectedLang}>
               <div className="relative w-fit z-10">
@@ -122,7 +179,7 @@ const NavBar = () => {
               </div>
             </Listbox>
           </div>
-          <div className="lg:hidden pl-5">
+          <div className={`lg:hidden pl-5 ${isMenuOpen ? "hidden" : ""}`}>
             <AnimatePresence>
               <motion.button
                 className="text-white"
@@ -143,40 +200,6 @@ const NavBar = () => {
             </AnimatePresence>
           </div>
         </div>
-
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.nav
-              className="mobile-navbar mr-2 w-fit"
-              initial="hidden"
-              animate={isMenuOpen ? "visible" : "hidden"}
-              exit="hidden"
-              variants={navContainer}
-            >
-              {navBarLinks.map((link) => (
-                <div key={link.title} className="py-4 hover:text-hover-green">
-                  <h3>
-                    <Link key={link.title} href={link.url}>
-                      {link.title}
-                    </Link>
-                  </h3>
-                </div>
-              ))}
-              <div className="lg:pl-2 xl:pl-3 2xl:pl-4 pt-4">
-                <h3>
-                  <Link href="/" className="hover:text-hover-green">
-                    LOGIN{" "}
-                  </Link>
-                  |
-                  <Link href="/" className="hover:text-hover-green">
-                    {" "}
-                    REGISTER
-                  </Link>
-                </h3>
-              </div>
-            </motion.nav>
-          )}
-        </AnimatePresence>
       </header>
     </>
   );

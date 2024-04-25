@@ -17,6 +17,7 @@ const config: Config = {
         "background-green": "#112012",
         "hover-green": "#98C454",
         "mid-green": "#43795D",
+        "text-gray": "#4E4B4B",
       },
       padding: {
         "84": "21rem",
@@ -52,6 +53,9 @@ const config: Config = {
       lg: "1024px",
       xl: "1280px",
       "2xl": "1536px",
+    },
+    borderRadius: {
+      "4xl": "82px",
     },
   },
   plugins: [],

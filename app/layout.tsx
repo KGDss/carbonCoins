@@ -3,7 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components";
 
-const inter = Inter({ subsets: ["latin"], weight: ['300','400','500','700'] });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,11 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
       <body className={`relative ${inter.className}`}>
-      <NavBar />
+        <NavBar />
         {children}
-        </body>
+      </body>
     </html>
   );
 }

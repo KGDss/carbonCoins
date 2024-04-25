@@ -26,23 +26,8 @@ const HowItWorks = () => {
     right1: { x: "25%", scale: 0.7, zIndex: 2 },
   };
 
-  const textVariants = {
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "easeOut",
-        duration: 0.3,
-      },
-    },
-    hide: {
-      y: -20,
-      opacity: 0,
-    },
-  };
-
   return (
-    <section className=" sm: pt-32">
+    <section className="pt-20 sm:pt-40 lg:pt-20">
       <div className=" sm:mb-0 lg:mb-40" />
       <div className="  xl:flex flex-row justify-evenly pb-10">
         <div className="flex mt-0 xl:flex items-center flex-row justify-center basis-1/2 ">
@@ -59,7 +44,7 @@ const HowItWorks = () => {
               key={index}
               src={image}
               alt={image}
-              className="w-6/12 xl:w-5/12"
+              className="w-6/12 xl:w-5/12 2xl:w-4/12"
               initial="center"
               animate={positions[positionIndexes[index]]}
               variants={imageVariants}
@@ -69,7 +54,7 @@ const HowItWorks = () => {
           ))}
         </div>
         <div
-          className="hidden xl:flex flex-col items-center justify-center basis-1/3 pt-28"
+          className="hidden xl:flex flex-col items-center justify-center basis-1/3 pt-20"
           key="animate-on-state"
         >
           <span className="text-6xl font-bold pb-5">
@@ -78,7 +63,7 @@ const HowItWorks = () => {
           <span className="text-xl">{textSlide[currentPos].text}</span>
         </div>
       </div>
-      <motion.div className="flex flex-col text-center  px-20 pt-20 sm:pt-44 md:pt-60 lg:pt-80 xl:hidden">
+      <motion.div className="flex flex-col text-center  px-20 pt-16 sm:pt-24 md:pt-32 lg:pt-40 xl:hidden">
         <span className="text-3xl font-bold">{textSlide[currentPos].id}.</span>
         <span className="text-lg">{textSlide[currentPos].text}</span>
       </motion.div>
