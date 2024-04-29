@@ -17,21 +17,26 @@ const getContract = async () => {
 };
 
 export default function TokenPage() {
-  const [account, setAccount] = useState("");
-  const [amount, setAmount] = useState("");
+  const [mintAccount, setMintAccount] = useState("");
+  const [burnAccount, setBurnAccount] = useState("");
+  const [transferAccount, setTransferAccount] = useState("");
+  const [balanceAccount, setBalanceAccount] = useState("");
+  const [mintAmount, setMintAmount] = useState("");
+  const [burnAmount, setBurnAmount] = useState("");
+  const [transferAmount, setTransferAmount] = useState("");
   const [tokenBalance, setTokenBalance] = useState("");
   const [totalSupply, setTotalSupply] = useState("");
   const [name, setName] = useState("");
   const [symbol, setSymbol] = useState("");
 
   async function mintToken() {
-    if (!account || !amount) {
+    if (!mintAccount || !mintAmount) {
       alert("Please fill Account and Amount");
       return;
     }
     try {
       const myTokenContract = await getContract();
-      await myTokenContract.mint(account, ethers.parseEther(amount));
+      await myTokenContract.mint(mintAccount, ethers.parseEther(mintAmount));
       console.log("Tokens minted successfully!");
     } catch (error) {
       console.error("Error minting tokens:", error);
@@ -39,13 +44,13 @@ export default function TokenPage() {
   }
 
   async function burnToken() {
-    if (!amount) {
+    if (!burnAmount) {
       alert("Please fill Amount");
       return;
     }
     try {
       const myTokenContract = await getContract();
-      await myTokenContract.burn(ethers.parseEther(amount));
+      await myTokenContract.burn(ethers.parseEther(burnAmount));
       console.log("Tokens burned successfully!");
     } catch (error) {
       console.error("Error burning tokens:", error);
@@ -53,13 +58,16 @@ export default function TokenPage() {
   }
 
   async function transferToken() {
-    if (!account || !amount) {
+    if (!transferAccount || !transferAmount) {
       alert("Please fill Account and Amount");
       return;
     }
     try {
       const myTokenContract = await getContract();
-      await myTokenContract.transfer(account, ethers.parseEther(amount));
+      await myTokenContract.transfer(
+        transferAccount,
+        ethers.parseEther(transferAmount)
+      );
       console.log("Tokens transferred successfully!");
     } catch (error) {
       console.error("Error transferring tokens:", error);
@@ -67,13 +75,13 @@ export default function TokenPage() {
   }
 
   async function getTokenBalance() {
-    if (!account) {
+    if (!balanceAccount) {
       alert("Please fill Account");
       return;
     }
     try {
       const myTokenContract = await getContract();
-      const balance = await myTokenContract.balanceOf(account);
+      const balance = await myTokenContract.balanceOf(balanceAccount);
       setTokenBalance(balance.toString());
       console.log("Balance: ", balance);
     } catch (error) {
@@ -160,8 +168,8 @@ export default function TokenPage() {
                     id="accont"
                     type="text"
                     className="block border w-full"
-                    value={account}
-                    onChange={(e) => setAccount(e.target.value)}
+                    value={mintAccount}
+                    onChange={(e) => setMintAccount(e.target.value)}
                   />
                 </div>
                 <div>
@@ -172,8 +180,8 @@ export default function TokenPage() {
                     id="amount"
                     type="text"
                     className="block border w-full"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    value={mintAmount}
+                    onChange={(e) => setMintAmount(e.target.value)}
                   />
                 </div>
 
@@ -198,8 +206,8 @@ export default function TokenPage() {
                     id="accont"
                     type="text"
                     className="block border w-full"
-                    value={account}
-                    onChange={(e) => setAccount(e.target.value)}
+                    value={burnAccount}
+                    onChange={(e) => setBurnAccount(e.target.value)}
                   />
                 </div>
                 <div>
@@ -210,8 +218,8 @@ export default function TokenPage() {
                     id="amount"
                     type="text"
                     className="block border w-full"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    value={burnAmount}
+                    onChange={(e) => setBurnAmount(e.target.value)}
                   />
                 </div>
 
@@ -238,8 +246,8 @@ export default function TokenPage() {
                     id="accont"
                     type="text"
                     className="block border w-full"
-                    value={account}
-                    onChange={(e) => setAccount(e.target.value)}
+                    value={transferAccount}
+                    onChange={(e) => setTransferAccount(e.target.value)}
                   />
                 </div>
                 <div>
@@ -250,8 +258,8 @@ export default function TokenPage() {
                     id="amount"
                     type="text"
                     className="block border w-full"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    value={transferAmount}
+                    onChange={(e) => setTransferAmount(e.target.value)}
                   />
                 </div>
 
@@ -279,23 +287,10 @@ export default function TokenPage() {
                     id="accont"
                     type="text"
                     className="block border w-full"
-                    value={account}
-                    onChange={(e) => setAccount(e.target.value)}
+                    value={balanceAccount}
+                    onChange={(e) => setBalanceAccount(e.target.value)}
                   />
                 </div>
-                <div>
-                  <label htmlFor="amount" className="block ">
-                    Amount:{" "}
-                  </label>
-                  <input
-                    id="amount"
-                    type="text"
-                    className="block border w-full"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                  />
-                </div>
-
                 <button
                   onClick={getTokenBalance}
                   className="mt-2 bg-yellow-500 text-white px-4 py-2 rounded w-full"
