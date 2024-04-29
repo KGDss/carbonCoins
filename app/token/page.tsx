@@ -28,6 +28,7 @@ export default function TokenPage() {
   const [totalSupply, setTotalSupply] = useState("");
   const [name, setName] = useState("");
   const [symbol, setSymbol] = useState("");
+  const [walletAddress, setWalletAddress] = useState("");
 
   async function mintToken() {
     if (!mintAccount || !mintAmount) {
@@ -119,12 +120,30 @@ export default function TokenPage() {
     fetchData();
   }, [name, symbol]);
 
+  useEffect(() => {
+    async function fetchWalletAddress() {
+      try {
+        const signer = await getSigner();
+        setWalletAddress(await signer.getAddress()); // Fetch and set wallet address
+      } catch (error) {
+        console.error("Error fetching wallet address:", error);
+      }
+    }
+    fetchWalletAddress();
+  }, []);
+
   return (
     <>
       <div className="min-h-screen flex flex-col items-center bg-gray-50 text-text-gray">
         <div className="pt-10">
-          <h1 className="text-2xl font-bold mb-4">
+          <h1 className="text-2xl font-bold mb-4 flex flex-col justify-center items-center">
             Admin Carbon Coins Interactions
+            {walletAddress && (
+              <p>
+                Wallet Address:{" "}
+                <span className="text-hover-green">{walletAddress}</span>
+              </p>
+            )}
           </h1>
         </div>
         <div className="flex flex-col justify-center items-center">
