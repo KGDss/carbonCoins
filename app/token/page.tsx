@@ -132,6 +132,36 @@ export default function TokenPage() {
     fetchWalletAddress();
   }, [name, symbol]);
 
+  async function addTokenToWallet() {
+    try {
+      const tokenAddress = contractAddress;
+      const tokenSymbol = symbol;
+      const tokenDecimals = 18; // Adjust if your token uses different decimals
+      const tokenImage = ""; // Provide the URL of your token image if available
+
+      const wasAdded = await (window as any).ethereum.request({
+        method: "wallet_watchAsset",
+        params: {
+          type: "ERC20",
+          options: {
+            address: tokenAddress,
+            symbol: tokenSymbol,
+            decimals: tokenDecimals,
+            image: tokenImage,
+          },
+        },
+      });
+
+      if (wasAdded) {
+        console.log("Token added to wallet!");
+      } else {
+        console.log("Token not added to wallet.");
+      }
+    } catch (error) {
+      console.error("Error adding token to wallet:", error);
+    }
+  }
+
   return (
     <>
       <div className="min-h-screen flex flex-col items-center bg-gray-50 text-text-gray">
@@ -318,80 +348,9 @@ export default function TokenPage() {
                 </button>
               </div>
             </div>
-            {/* <div className="flex flex-row">
-              <div className="p-8 bg-white rounded shadow-md mb-16">
-                <h1 className="text-2xl font-bold mb-4">Token Interaction</h1>
-
-                {tokenBalance && (
-                  <p>Token Balance: {ethers.formatEther(tokenBalance)}</p>
-                )}
-                {totalSupply && (
-                  <p>Total Supply: {ethers.formatEther(totalSupply)}</p>
-                )}
-                {name && <p>Token Name: {name}</p>}
-                {symbol && <p>Token Symbol: {symbol}</p>}
-
-                <div className="mt-2 text-text-gray">
-                  <label htmlFor="account" className="block text-text-gray">
-                    Account:{" "}
-                  </label>
-                  <input
-                    id="accont"
-                    type="text"
-                    className="block border w-full"
-                    value={account}
-                    onChange={(e) => setAccount(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="amount" className="block ">
-                    Amount:{" "}
-                  </label>
-                  <input
-                    id="amount"
-                    type="text"
-                    className="block border w-full"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                  />
-                </div>
-
-                <button
-                  onClick={mintToken}
-                  className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                  Mint Token
-                </button>
-                <button
-                  onClick={burnToken}
-                  className="ml-2 bg-red-500 text-white px-4 py-2 rounded"
-                >
-                  Burn Token
-                </button>
-                <button
-                  onClick={transferToken}
-                  className="ml-2 bg-green-500 text-white px-4 py-2 rounded"
-                >
-                  Transfer Token
-                </button>
-                <button
-                  onClick={getTokenBalance}
-                  className="ml-2 bg-yellow-500 text-white px-4 py-2 rounded"
-                >
-                  Balance
-                </button>
-
-                <div className="mt-4 italic text-sm">
-                  * Need to redeploy a contract (./contract/MyToken.sol)
-                </div>
-                <div className="italic text-sm">
-                  {" "}
-                  and change a contract address (./app/token/page.tsx){" "}
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
+        <button onClick={addTokenToWallet}> ADD TOKEN TO WALLET </button>
       </div>
     </>
   );
