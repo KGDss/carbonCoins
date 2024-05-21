@@ -5,6 +5,7 @@ import AboutUs from "./AboutUs";
 import OurTeam from "./OurTeam";
 import Login from "./Login";
 import MaybeShowNavbar from "./MaybeShowNavbar";
+import Register from "./Register";
 
 export {
   NavBar,
@@ -14,4 +15,5 @@ export {
   OurTeam,
   Login,
   MaybeShowNavbar,
+  Register,
 };

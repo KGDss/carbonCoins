@@ -5,14 +5,14 @@ import { Listbox, Transition } from "@headlessui/react";
 import { navBarLinks, languages } from "@/constants";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Login } from ".";
+import { Login, Register } from ".";
 // import { useRouter } from "next/navigation";
 
 const NavBar = () => {
   const [selectedLang, SetselectedLang] = useState(languages[0]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  // const router = useRouter();
+  const [isRegister, setIsRegister] = useState(false);
   const scrollingEnable = (state: boolean) => {
     const htmlElement = document.querySelector("html");
     if (htmlElement) {
@@ -21,13 +21,20 @@ const NavBar = () => {
       console.error("HTML element not found");
     }
   };
+
   const toggelMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     scrollingEnable(isMenuOpen);
   };
+
   const toggleLogin = () => {
     setIsLogin(!isLogin);
     scrollingEnable(isLogin);
+  };
+
+  const toggleRegister = () => {
+    setIsRegister(!isRegister);
+    scrollingEnable(isRegister);
   };
 
   const navContainer = {
@@ -51,9 +58,31 @@ const NavBar = () => {
 
   return (
     <>
-      {/* <div className={``}>
-        <Login />
-      </div> */}
+      <div>
+        {isLogin && (
+          <motion.div
+            initial={{ opacity: 0.5, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0.5, scale: 0.1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Login toggleLogin={toggleLogin} />{" "}
+          </motion.div>
+        )}
+      </div>
+
+      <div>
+        {isRegister && (
+          <motion.div
+            initial={{ opacity: 0.5, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0.5, scale: 0.1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Register toggleRegister={toggleRegister} />{" "}
+          </motion.div>
+        )}
+      </div>
 
       <AnimatePresence>
         {isMenuOpen && (
@@ -81,11 +110,19 @@ const NavBar = () => {
             ))}
             <div className="lg:pl-2 xl:pl-3 2xl:pl-4 pt-4">
               <h3>
-                <Link href="/" className="hover:text-hover-green">
+                <Link
+                  href="/"
+                  className="hover:text-hover-green"
+                  onClick={toggleLogin}
+                >
                   LOGIN{" "}
                 </Link>
                 |
-                <Link href="/" className="hover:text-hover-green">
+                <Link
+                  href="/"
+                  className="hover:text-hover-green"
+                  onClick={toggleRegister}
+                >
                   {" "}
                   REGISTER
                 </Link>
@@ -123,11 +160,19 @@ const NavBar = () => {
           ))}
           <div className="text-base lg:pl-2 xl:pl-3 2xl:pl-4">
             <h3>
-              <Link href="/token" className="hover:text-hover-green">
+              <Link
+                href="/"
+                className="hover:text-hover-green"
+                onClick={toggleLogin}
+              >
                 LOGIN{" "}
               </Link>
               |
-              <Link href="/" className="hover:text-hover-green">
+              <Link
+                href="/"
+                className="hover:text-hover-green"
+                onClick={toggleRegister}
+              >
                 {" "}
                 REGISTER
               </Link>

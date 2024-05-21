@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
+const Register = ({ toggleRegister }: { toggleRegister: () => void }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const handleClick = () => {
-    toggleLogin();
+    toggleRegister();
   };
   return (
     <>
@@ -24,10 +24,10 @@ const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
             />
             <div>
               <div className="flex flex-col justify-center items-center text-text-gray pt-10">
-                <div className="text-5xl font-bold">LOGIN</div>
+                <div className="text-5xl font-bold">Register</div>
                 <div className="mt-12">
                   <form
-                    action=""
+                    action="submit"
                     className="flex flex-col justify-center items-center gap-8"
                   >
                     <input
@@ -67,4 +67,4 @@ const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
   );
 };
 
-export default Login;
+export default Register;

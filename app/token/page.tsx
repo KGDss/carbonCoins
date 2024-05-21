@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import MyTokenABI from "../../contracts/abi/TokenMng.json";
 
 // Replace with the actual contract address
-const contractAddress = "0xf304ba1d85Dd7e5558C9AE4c7ccc3968F4f24BaA";
+const contractAddress = "0xD6a973d907070A68F51A3885A169fFDF67e365c8";
 
 const getSigner = async () => {
   const provider = new ethers.BrowserProvider((window as any).ethereum);

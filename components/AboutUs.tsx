@@ -15,7 +15,6 @@ const AboutMe = () => {
   const [duration, setDuration] = useState(FAST);
   const [mustFinish, setMustFinish] = useState(false);
   const [rerender, setRerender] = useState(false);
-  // Dynamically adjust gap size based on screen width
   useEffect(() => {
     const updateGapSize = () => {
       const screenWidth = window.innerWidth;
@@ -26,7 +25,6 @@ const AboutMe = () => {
       else if (screenWidth >= 640) setGapSize(-20);
       else setGapSize(-26);
     };
-
     // Call once and set up resize event listener
     updateGapSize();
     window.addEventListener("resize", updateGapSize);
