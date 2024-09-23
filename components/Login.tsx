@@ -47,6 +47,7 @@ const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
                       placeholder="Password:"
                       className="bg-inherit border-b-2 border-text-gray text-text-gray placeholder:text-text-gray w-88"
                     />
+                    <button>hello</button>
                   </form>
                 </div>
               </div>
@@ -58,7 +59,6 @@ const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
               height={10000}
               priority={true}
               className="absolute -bottom-1"
-              onClick={handleClick}
             />
           </div>
         </div>

@@ -1,12 +1,23 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { AuthService } from "./services/auth";
+import { RegisterDto } from "./models/auth";
 
 const Register = ({ toggleRegister }: { toggleRegister: () => void }) => {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const handleClick = () => {
     toggleRegister();
+  };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await handleRegister({ username, password, email });
+  };
+
+  const handleRegister = async ({ username, password, email }: RegisterDto) => {
+    await AuthService.register({ username, password, email });
   };
   return (
     <>
@@ -29,13 +40,23 @@ const Register = ({ toggleRegister }: { toggleRegister: () => void }) => {
                   <form
                     action="submit"
                     className="flex flex-col justify-center items-center gap-8"
+                    onSubmit={handleSubmit}
                   >
                     <input
                       id="input"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                       width="100px"
                       placeholder="Username:"
+                      className="bg-inherit border-b-2 border-text-gray text-text-gray placeholder:text-text-gray w-88"
+                    />
+                    <input
+                      id="input"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      width="100px"
+                      placeholder="Email:"
                       className="bg-inherit border-b-2 border-text-gray text-text-gray placeholder:text-text-gray w-88"
                     />
                     <input
@@ -47,6 +68,7 @@ const Register = ({ toggleRegister }: { toggleRegister: () => void }) => {
                       placeholder="Password:"
                       className="bg-inherit border-b-2 border-text-gray text-text-gray placeholder:text-text-gray w-88"
                     />
+                    <button type="submit">Sign Up</button>
                   </form>
                 </div>
               </div>
@@ -58,7 +80,6 @@ const Register = ({ toggleRegister }: { toggleRegister: () => void }) => {
               height={10000}
               priority={true}
               className="absolute -bottom-1"
-              onClick={handleClick}
             />
           </div>
         </div>
