@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { AuthService } from "./services/auth";
-import { RegisterDto } from "./models/auth";
-import CustomButton from "./CustomButton";
+import { AuthService } from "../services/auth";
+import { RegisterDto } from "../models/auth";
+import CustomButton from "../CustomButton";
 import { toast, Toaster } from "sonner";
 
 const Register = ({ toggleRegister }: { toggleRegister: () => void }) => {

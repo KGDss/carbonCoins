@@ -1,4 +1,4 @@
-import { AboutUs, HowItWorks, Landing, OurTeam } from "@/components";
+import { AboutUs, HowItWorks, Landing, OurTeam } from "@/components/home";
 import { Toaster } from "sonner";
 
 export default function Home() {

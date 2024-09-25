@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
-import CustomButton from "./CustomButton";
-import { AuthService } from "./services/auth";
-import { LoginDto } from "./models/auth";
+import CustomButton from "../CustomButton";
+import { AuthService } from "../services/auth";
+import { LoginDto } from "../models/auth";
 
 const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
   const [username, setName] = useState("");
