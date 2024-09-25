@@ -1,8 +1,8 @@
-export type Login = {
+export type LoginDto = {
   username: string;
   password: string;
 };
 
-export type RegisterDto = Login & {
+export type RegisterDto = LoginDto & {
   email: string;
 };

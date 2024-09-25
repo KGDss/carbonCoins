@@ -48,3 +48,5 @@ export const imgCarousel = [
   { path: "/BLOCK.svg", link: "https://block.phuket.psu.ac.th/" },
   { path: "/TGO.svg", link: "https://www.tgo.or.th/2023/index.php/en/" },
 ];
+
+export const notUseNavBarPath = ["/token", "/admin", "/user"];

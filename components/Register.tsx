@@ -3,21 +3,40 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { AuthService } from "./services/auth";
 import { RegisterDto } from "./models/auth";
+import CustomButton from "./CustomButton";
+import { toast, Toaster } from "sonner";
 
 const Register = ({ toggleRegister }: { toggleRegister: () => void }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [errors, setErrors] = useState({
+    username: false,
+    email: false,
+    password: false,
+  });
   const handleClick = () => {
     toggleRegister();
   };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await handleRegister({ username, password, email });
+    const newErrors = {
+      username: !username,
+      email: !email,
+      password: !password,
+    };
+
+    setErrors(newErrors);
+
+    if (!newErrors.username && !newErrors.email && !newErrors.password) {
+      await handleRegister({ username, password, email });
+    }
   };
 
   const handleRegister = async ({ username, password, email }: RegisterDto) => {
-    await AuthService.register({ username, password, email });
+    const res = await AuthService.register({ username, password, email });
+    if (res) toggleRegister();
   };
   return (
     <>
@@ -43,32 +62,41 @@ const Register = ({ toggleRegister }: { toggleRegister: () => void }) => {
                     onSubmit={handleSubmit}
                   >
                     <input
-                      id="input"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       width="100px"
                       placeholder="Username:"
-                      className="bg-inherit border-b-2 border-text-gray text-text-gray placeholder:text-text-gray w-88"
+                      className={`bg-inherit border-b-2 ${
+                        errors.username
+                          ? "border-red-500 placeholder:text-red-500"
+                          : "border-text-gray"
+                      } text-text-gray placeholder:text-text-gray w-88`}
                     />
                     <input
-                      id="input"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       width="100px"
                       placeholder="Email:"
-                      className="bg-inherit border-b-2 border-text-gray text-text-gray placeholder:text-text-gray w-88"
+                      className={`bg-inherit border-b-2 ${
+                        errors.email ? "border-red-500" : "border-text-gray"
+                      } text-text-gray placeholder:text-text-gray w-88`}
                     />
                     <input
-                      id="input"
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      width="100px"
+                      width="4em"
                       placeholder="Password:"
-                      className="bg-inherit border-b-2 border-text-gray text-text-gray placeholder:text-text-gray w-88"
+                      className={`bg-inherit border-b-2 ${
+                        errors.password ? "border-red-500" : "border-text-gray"
+                      } text-text-gray placeholder:text-text-gray w-88`}
                     />
-                    <button type="submit">Sign Up</button>
+                    <CustomButton
+                      title="Sign Up"
+                      containerStyles="bg-mid-green text-white w-full h-full z-40 p-1"
+                      btnType="submit"
+                    />
                   </form>
                 </div>
               </div>

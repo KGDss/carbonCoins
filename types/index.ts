@@ -8,6 +8,8 @@ export interface CustomButtonProps {
   textStyles?: string;
   rightIcon?: string;
   isDisabled?: boolean;
+  height?: number;
+  width?: number;
 }
 
 export interface CardProps {

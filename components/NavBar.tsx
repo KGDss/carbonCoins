@@ -79,7 +79,7 @@ const NavBar = () => {
             exit={{ opacity: 0.5, scale: 0.1 }}
             transition={{ duration: 0.2 }}
           >
-            <Register toggleRegister={toggleRegister} />{" "}
+            <Register toggleRegister={toggleRegister} />
           </motion.div>
         )}
       </div>
