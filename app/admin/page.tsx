@@ -1,7 +1,16 @@
-import React from "react";
+"use client";
+import SideBar from "@/components/SideBar";
+import React, { useEffect } from "react";
 
 const AdminPage = () => {
-  return <div>AdminDash</div>;
+  useEffect(() => {
+    document.body.style.backgroundColor = "white";
+  }, []);
+  return (
+    <>
+      <SideBar />
+    </>
+  );
 };
 
 export default AdminPage;

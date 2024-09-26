@@ -1,3 +1,8 @@
+export type DecodedToken = {
+  id: number;
+  role: string;
+};
+
 export type SuccessResponse = {
   status: number;
   message: string;

@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
 import Image from "next/image";
-import { toast } from "sonner";
+import React, { useState } from "react";
 import CustomButton from "../CustomButton";
-import { AuthService } from "../services/auth";
 import { LoginDto } from "../models/auth";
+import { AuthService } from "../services/auth";
+import { useRouter } from "next/navigation";
 
 const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
   const [username, setName] = useState("");
@@ -16,6 +16,7 @@ const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
     username: false,
     password: false,
   });
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,6 +36,11 @@ const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
     const res = await AuthService.login({ username, password });
     if (res) {
       localStorage.setItem("token", res.token);
+      const role = AuthService.roleFromToken(res.token);
+
+      if (role === "ADMIN") router.push("/admin");
+      if (role === "USER") router.push("/user");
+      document.body.style.backgroundColor = "white";
       toggleLogin();
     }
   };

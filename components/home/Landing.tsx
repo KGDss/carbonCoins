@@ -6,6 +6,7 @@ const Landing = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    document.body.style.backgroundColor = "#112012";
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };

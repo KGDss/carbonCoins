@@ -1,6 +1,8 @@
 import axios from "axios";
-import { LoginDto, RegisterDto } from "../models/auth";
 import { toast } from "sonner";
+import { LoginDto, RegisterDto } from "../models/auth";
+import { DecodedToken } from "../models/base";
+import { jwtDecode } from "jwt-decode";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -31,5 +33,13 @@ export const AuthService = {
     } catch (error: any) {
       toast.error(error.response?.data?.message || "Register failed");
     }
+  },
+  roleFromToken: (token: string) => {
+    const decoded: DecodedToken = jwtDecode(token);
+    return decoded.role === "ADMIN"
+      ? "ADMIN"
+      : decoded.role === "USER"
+      ? "USER"
+      : "";
   },
 };
