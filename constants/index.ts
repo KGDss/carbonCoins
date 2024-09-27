@@ -50,3 +50,67 @@ export const imgCarousel = [
 ];
 
 export const notUseNavBarPath = ["/token", "/admin", "/user"];
+
+export let sideBar = [
+  {
+    title: "Dashboard",
+    notSelectedUrl: "/sideBar/dashIcon.svg",
+    selectedUrl: "/sideBar/dashIconSelected.svg",
+    isSelected: true,
+  },
+  {
+    title: "Market",
+    notSelectedUrl: "/sideBar/market.svg",
+    selectedUrl: "/sideBar/marketSelected.svg",
+    isSelected: false,
+  },
+  {
+    title: "Transfer",
+    notSelectedUrl: "/sideBar/transfer.svg",
+    selectedUrl: "/sideBar/transferSelected.svg",
+    isSelected: false,
+  },
+];
+
+export const hotelCF = [
+  {
+    topic: "Stationary Combustion (การเผาไหม้แบบอยู่กับที่)",
+    details: [
+      {
+        topic: "Diesel (Generator)",
+        storageUnit: "ลิตร",
+        ef: 2.7078,
+        unit: "kg CO2e/ลิตร",
+      },
+      {
+        topic: "Diesel (Fire pump) ",
+        storageUnit: "ลิตร",
+        ef: 2.7078,
+        unit: "kg CO2e/ลิตร",
+      },
+    ],
+  },
+  {
+    topic: "Mobile Combustion (การเผาไหม้แบบเคลื่อนที่)",
+    details: [
+      {
+        topic: "น้ำมัน Diesel (รถตู้, รถมอเตอร์ไซค์)",
+        storageUnit: "ลิตร",
+        ef: 2.7406,
+        unit: "kg CO2e/ลิตร",
+      },
+      {
+        topic: "น้ำมัน Gasohol 91, E20, E85",
+        storageUnit: "ลิตร",
+        ef: 2.2719,
+        unit: "kg CO2e/ลิตร",
+      },
+      {
+        topic: "น้ำมัน Gasohol 95",
+        storageUnit: "ลิตร",
+        ef: 2.2719,
+        unit: "kg CO2e/ลิตร",
+      },
+    ],
+  },
+];
