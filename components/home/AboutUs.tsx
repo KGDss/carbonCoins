@@ -1,9 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { imgCarousel } from "@/constants";
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import useMeasure from "react-use-measure";
 import { animate, motion, useMotionValue } from "framer-motion";
+import Link from "next/link";
 
 const AboutMe = () => {
   const handleClick = () => {};
@@ -64,10 +66,35 @@ const AboutMe = () => {
       </header>
 
       <div className="flex flex-col space-y-8 justify-center items-center">
-        <span className="text-center justify-center w-11/12  mt-10 text-xl">
-          We are 3rd year Digital Engineering students at Prince of Songkla
-          Univerysity, Phuket Campus working on this Carbon Coins application
-          hoping it would be able to help fight climate change !!
+        <span className="text-center justify-center w-11/12  mt-10 text-xl leading-relaxed">
+          {/* Hi, I am Nicki Julius Hartmann, a 4th year Digital Engineering student
+          at Prince of Songkhla University,Phuket Campus, working on this Carbon
+          Coins application hoping it would be able to help fight climate change
+          !! <br /> <br /> */}
+          If you're reading this, it's probably because I don't have a portfolio
+          website just yet—so I submit this project as my way of showcasing my
+          passion and skills in web development! Though, I'm still working on
+          this project here are some other paths that is not yet available
+          through the landing page : <br />
+          <br />
+          <Link
+            href={"/token"}
+            className="text-2xl hover:cursor-pointer underline"
+          >
+            Blockchain
+          </Link>
+          - You will be ask to sign in with metamask wallet to do basic
+          blockchain operations. I'm the only one able to use it fully, but you
+          can give it a try
+          <br />
+          <Link
+            href={"/admin"}
+            className="text-2xl hover:cursor-pointer underline"
+          >
+            Dashboard
+          </Link>
+          - I'm working on simplifying the estimation of GHGs for hotels but it
+          will change to real dashboard soon
         </span>
         <button
           className="hover:text-hover-green underline"

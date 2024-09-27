@@ -1,21 +1,31 @@
 "use client";
 import { HotelCFComponentProps } from "@/types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const HotelCF: React.FC<HotelCFComponentProps> = ({ data }) => {
-  // Use an object to track amounts for each detail
+interface HotelCFProps extends HotelCFComponentProps {
+  updateAmount: (topic: string, value: number) => void; // Prop to update the amount in the parent
+}
+
+const HotelCF: React.FC<HotelCFProps> = ({ data, updateAmount }) => {
+  // State to track the amount for each topic
   const [amount, setAmount] = useState<{ [key: string]: number }>({});
 
   // Handle input change for each amount
   const handleAmountChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    topic: string
+    detail: { topic: string; ef: number }
   ) => {
     const value = parseFloat(e.target.value) || 0;
+    const calculatedValue = detail.ef * value;
+
+    // Update the local amount state
     setAmount((prevAmounts) => ({
       ...prevAmounts,
-      [topic]: value,
+      [detail.topic]: value,
     }));
+
+    // Call the updateAmount function to update the parent state
+    updateAmount(detail.topic, calculatedValue);
   };
 
   return (
@@ -31,7 +41,7 @@ const HotelCF: React.FC<HotelCFComponentProps> = ({ data }) => {
               <div>{detail.topic}</div>
               <input
                 value={amount[detail.topic] || ""}
-                onChange={(e) => handleAmountChange(e, detail.topic)}
+                onChange={(e) => handleAmountChange(e, detail)}
                 type="text"
                 className="border p-2"
                 placeholder="ปริมาณ"
