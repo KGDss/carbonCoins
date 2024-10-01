@@ -78,13 +78,13 @@ export const hotelCF = [
     details: [
       {
         topic: "Diesel (Generator)",
-        storageUnit: "ลิตร",
+        storageUnit: "ลิตร (Litre)",
         ef: 2.7078,
         unit: "kg CO2e/ลิตร",
       },
       {
         topic: "Diesel (Fire pump) ",
-        storageUnit: "ลิตร",
+        storageUnit: "ลิตร (Litre)",
         ef: 2.7078,
         unit: "kg CO2e/ลิตร",
       },
@@ -95,19 +95,19 @@ export const hotelCF = [
     details: [
       {
         topic: "น้ำมัน Diesel (รถตู้, รถมอเตอร์ไซค์)",
-        storageUnit: "ลิตร",
+        storageUnit: "ลิตร (Litre)",
         ef: 2.7406,
         unit: "kg CO2e/ลิตร",
       },
       {
         topic: "น้ำมัน Gasohol 91, E20, E85",
-        storageUnit: "ลิตร",
+        storageUnit: "ลิตร (Litre)",
         ef: 2.2719,
         unit: "kg CO2e/ลิตร",
       },
       {
         topic: "น้ำมัน Gasohol 95",
-        storageUnit: "ลิตร",
+        storageUnit: "ลิตร (Litre)",
         ef: 2.2719,
         unit: "kg CO2e/ลิตร",
       },

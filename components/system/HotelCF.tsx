@@ -46,9 +46,9 @@ const HotelCF: React.FC<HotelCFProps> = ({ data, updateAmount }) => {
                 className="border p-2"
                 placeholder="ปริมาณ"
               />
-              <div>{detail.storageUnit}</div>
-              <div>{detail.ef}</div>
-              <div>{detail.unit}</div>
+              <div className="border p-2">{detail.storageUnit}</div>
+              <div className="border p-2">{detail.ef}</div>
+              <div className="border p-2">{detail.unit}</div>
               <div>
                 {amount[detail.topic]
                   ? (detail.ef * amount[detail.topic]).toFixed(2)
