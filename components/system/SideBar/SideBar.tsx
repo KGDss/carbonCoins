@@ -1,11 +1,18 @@
 "use client";
-import { sideBar } from "@/constants";
+import { sideBarOptions } from "@/constants";
 import Image from "next/image";
 import React, { useState } from "react";
-import Card from "./Card";
+import SideBarOptionCard from "./SideBarOptionCards";
 
-const SideBar = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(0);
+type SideBarIndexType = {
+  sideBarIndex: number;
+  setSidebarIndex: (index: number) => void;
+};
+
+const SideBar: React.FC<SideBarIndexType> = ({
+  sideBarIndex,
+  setSidebarIndex,
+}) => {
   return (
     <div className="w-2/12 h-screen bg-background-green overflow-hidden sticky top-0">
       <div>
@@ -37,17 +44,19 @@ const SideBar = () => {
         <span className="font-medium text-lg">MAIN MENU</span>
       </div>
 
-      <div className="">
-        {sideBar.map((item, index) => (
-          <Card
+      <div>
+        {sideBarOptions.map((item, index) => (
+          <SideBarOptionCard
             key={index}
             image={
-              index === selectedIndex ? item.selectedUrl : item.notSelectedUrl
+              index === sideBarIndex ? item.selectedUrl : item.notSelectedUrl
             }
             title={item.title}
-            isSelected={index === selectedIndex}
-            onClick={() => setSelectedIndex(index)} // Update selectedIndex onClick
-          ></Card>
+            isSelected={index === sideBarIndex}
+            onClick={() => {
+              setSidebarIndex(index);
+            }}
+          ></SideBarOptionCard>
         ))}
       </div>
       <div className="absolute bottom-0 w-full flex justify-center">

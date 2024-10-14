@@ -49,9 +49,9 @@ export const imgCarousel = [
   { path: "/TGO.svg", link: "https://www.tgo.or.th/2023/index.php/en/" },
 ];
 
-export const notUseNavBarPath = ["/token", "/admin", "/user"];
+export const notUseNavBarPath = ["/token", "/admin", "/user", "/todo"];
 
-export let sideBar = [
+export let sideBarOptions = [
   {
     title: "Dashboard",
     notSelectedUrl: "/sideBar/dashIcon.svg",
@@ -84,6 +84,12 @@ export const hotelCF = [
       },
       {
         topic: "Diesel (Fire pump) ",
+        storageUnit: "ลิตร (Litre)",
+        ef: 2.7078,
+        unit: "kg CO2e/ลิตร",
+      },
+      {
+        topic: "Diese (Fire pump) ",
         storageUnit: "ลิตร (Litre)",
         ef: 2.7078,
         unit: "kg CO2e/ลิตร",

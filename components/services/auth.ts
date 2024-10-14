@@ -42,4 +42,21 @@ export const AuthService = {
       ? "USER"
       : "";
   },
+
+  status: async (token: string) => {
+    try {
+      const res = await axios.get(`${API_BASE_URL}/auth/status`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.status === 200) {
+        return true;
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
+    return false;
+  },
 };

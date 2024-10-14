@@ -17,6 +17,7 @@ const AboutMe = () => {
   const [duration, setDuration] = useState(FAST);
   const [mustFinish, setMustFinish] = useState(false);
   const [rerender, setRerender] = useState(false);
+
   useEffect(() => {
     const updateGapSize = () => {
       const screenWidth = window.innerWidth;
@@ -27,17 +28,15 @@ const AboutMe = () => {
       else if (screenWidth >= 640) setGapSize(-20);
       else setGapSize(-26);
     };
-    // Call once and set up resize event listener
+
     updateGapSize();
     window.addEventListener("resize", updateGapSize);
-
-    // Clean up event listener
     return () => window.removeEventListener("resize", updateGapSize);
   }, []);
 
   useEffect(() => {
     let controls;
-    let finalPosition = -width / 2 - gapSize; // Use gapSize from state
+    let finalPosition = -width / 2 - gapSize;
 
     if (mustFinish) {
       controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
@@ -116,6 +115,7 @@ const AboutMe = () => {
           setDuration(FAST);
         }}
         onClick={() => {
+          // for mobile because they cant hover
           setMustFinish(true);
           setDuration((prevDuration) => (prevDuration === SLOW ? FAST : SLOW));
         }}

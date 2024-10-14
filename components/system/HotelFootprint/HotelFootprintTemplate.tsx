@@ -1,12 +1,15 @@
 "use client";
-import { HotelCFComponentProps } from "@/types";
+import { HotelFootprintComponentProps } from "@/types";
 import React, { useState } from "react";
 
-interface HotelCFProps extends HotelCFComponentProps {
+interface HotelFootprintProps extends HotelFootprintComponentProps {
   updateAmount: (topic: string, value: number) => void; // Prop to update the amount in the parent
 }
 
-const HotelCF: React.FC<HotelCFProps> = ({ data, updateAmount }) => {
+const HotelFootprintTemplate: React.FC<HotelFootprintProps> = ({
+  data,
+  updateAmount,
+}) => {
   // State to track the amount for each topic
   const [amount, setAmount] = useState<{ [key: string]: number }>({});
 
@@ -62,4 +65,4 @@ const HotelCF: React.FC<HotelCFProps> = ({ data, updateAmount }) => {
   );
 };
 
-export default HotelCF;
+export default HotelFootprintTemplate;

@@ -32,11 +32,11 @@ interface Detail {
   unit: string;
 }
 
-interface HotelCF {
+interface HotelFootprint {
   topic: string;
   details: Detail[];
 }
 
-export type HotelCFComponentProps = {
-  data: HotelCF[];
+export type HotelFootprintComponentProps = {
+  data: HotelFootprint[];
 };

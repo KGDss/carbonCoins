@@ -2,7 +2,7 @@ import { SideBarCardProps } from "@/types";
 import React from "react";
 import Image from "next/image";
 
-const Card: React.FC<SideBarCardProps> = ({
+const SideBarOptionCard: React.FC<SideBarCardProps> = ({
   image,
   title,
   isSelected,
@@ -29,4 +29,4 @@ const Card: React.FC<SideBarCardProps> = ({
   );
 };
 
-export default Card;
+export default SideBarOptionCard;
