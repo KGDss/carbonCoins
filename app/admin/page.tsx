@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Header from "@/components/system/header/Header";
-import SideBar from "@/components/system/sidebar/SideBar";
+import SideBar from "../../components/system/sidebar/SideBar";
 import { withAuth } from "@/components/hoc/withAuth";
 import { useState } from "react";
 import { useAuth } from "@/components/context/authContext";

@@ -1,7 +1,7 @@
 "use client";
 import { sideBarOptions } from "@/constants";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import SideBarOptionCard from "./SideBarOptionCards";
 
 type SideBarIndexType = {
