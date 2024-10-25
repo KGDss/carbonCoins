@@ -9,7 +9,7 @@ type SideBarIndexType = {
   setSidebarIndex: (index: number) => void;
 };
 
-const SideBarComponent: React.FC<SideBarIndexType> = ({
+const SideBar: React.FC<SideBarIndexType> = ({
   sideBarIndex,
   setSidebarIndex,
 }) => {
@@ -72,4 +72,4 @@ const SideBarComponent: React.FC<SideBarIndexType> = ({
   );
 };
 
-export default SideBarComponent;
+export default SideBar;

@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const HotelFootprintComponent = () => {
+const HotelFootprint = () => {
   const [amount, setAmount] = useState<{ [key: string]: number }>({});
 
   const updateAmount = (topic: string, value: number) => {
@@ -82,4 +82,4 @@ const HotelFootprintComponent = () => {
   );
 };
 
-export default HotelFootprintComponent;
+export default HotelFootprint;
