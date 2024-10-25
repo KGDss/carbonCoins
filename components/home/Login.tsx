@@ -50,7 +50,7 @@ const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
         <div className="h-[50vh] w-4/12 top-52 rounded-4xl bg-white z-40">
           <div className="rounded-4xl w-full h-full bg-gradient-to-b from-hover-green/30 relative overflow-hidden">
             <Image
-              src="/x.svg"
+              src="/landing/x.svg"
               alt="x"
               width={15}
               height={20}
@@ -90,7 +90,7 @@ const Login = ({ toggleLogin }: { toggleLogin: () => void }) => {
               </div>
             </div>
             <Image
-              src="/trees.svg"
+              src="/landing/trees.svg"
               alt="trees"
               width={10000}
               height={10000}

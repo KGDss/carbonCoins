@@ -32,7 +32,7 @@ const Landing = () => {
       <div className="relative">
         <div className="flex justify-center items-end z-10">
           <motion.img
-            src="/earth.svg"
+            src="/landing/earth.svg"
             alt="earth"
             height={600}
             width={600}

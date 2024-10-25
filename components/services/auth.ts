@@ -6,6 +6,11 @@ import { jwtDecode } from "jwt-decode";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+export interface AuthStatusResponse {
+  isAuthenticated: boolean;
+  username: string | null;
+}
+
 export const AuthService = {
   login: async ({ username, password }: LoginDto) => {
     try {
@@ -43,7 +48,7 @@ export const AuthService = {
       : "";
   },
 
-  status: async (token: string) => {
+  status: async (token: string): Promise<AuthStatusResponse> => {
     try {
       const res = await axios.get(`${API_BASE_URL}/auth/status`, {
         headers: {
@@ -51,12 +56,19 @@ export const AuthService = {
         },
       });
 
-      if (res.status === 200) {
-        return true;
+      if (res.status === 200 && res.data && res.data.username) {
+        return {
+          isAuthenticated: true,
+          username: res.data.username,
+        };
       }
     } catch (error: any) {
       console.log(error);
     }
-    return false;
+
+    return {
+      isAuthenticated: false,
+      username: null,
+    };
   },
 };

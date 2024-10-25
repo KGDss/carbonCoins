@@ -137,7 +137,7 @@ const NavBar = () => {
           className="w-5 sm:w-4/12 md:w-fit flex justify-center items-end min-w-48"
         >
           <Image
-            src="/logoName.svg"
+            src="/landing/logoName.svg"
             alt="logoname"
             width={300}
             height={20}
@@ -188,7 +188,7 @@ const NavBar = () => {
                     {selectedLang.lang}
                   </span>
                   <Image
-                    src="/chevron-up-down.svg"
+                    src="/landing/chevron-up-down.svg"
                     width={20}
                     height={20}
                     className="object-contain block"

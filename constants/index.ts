@@ -11,11 +11,11 @@ export const languages = [
 ];
 
 export const imageSlide = [
-  "/HIW1.svg",
-  "/HIW5.svg",
-  "/HIW4.svg",
-  "/HIW3.svg",
-  "/HIW2.svg",
+  "/landing/HIW1.svg",
+  "/landing/HIW5.svg",
+  "/landing/HIW4.svg",
+  "/landing/HIW3.svg",
+  "/landing/HIW2.svg",
 ];
 
 export const textSlide = [
@@ -42,11 +42,14 @@ export const textSlide = [
 ];
 
 export const imgCarousel = [
-  { path: "/PSU.svg", link: "https://en.psu.ac.th/" },
-  { path: "/CoC.svg", link: "https://www.computing.psu.ac.th/en/" },
-  { path: "/AiiLab.svg", link: "https://www.aiilab.tech/" },
-  { path: "/BLOCK.svg", link: "https://block.phuket.psu.ac.th/" },
-  { path: "/TGO.svg", link: "https://www.tgo.or.th/2023/index.php/en/" },
+  { path: "/landing/PSU.svg", link: "https://en.psu.ac.th/" },
+  { path: "/landing/CoC.svg", link: "https://www.computing.psu.ac.th/en/" },
+  { path: "/landing/AiiLab.svg", link: "https://www.aiilab.tech/" },
+  { path: "/landing/BLOCK.svg", link: "https://block.phuket.psu.ac.th/" },
+  {
+    path: "/landing/TGO.svg",
+    link: "https://www.tgo.or.th/2023/index.php/en/",
+  },
 ];
 
 export const notUseNavBarPath = ["/token", "/admin", "/user", "/todo"];

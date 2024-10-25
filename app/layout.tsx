@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { NavBar, MaybeShowNavbar } from "@/components/home";
+import { AuthProvider } from "@/components/context/authContext"; // Import your AuthProvider
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,10 +23,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`relative ${inter.className}`}>
-        <MaybeShowNavbar>
-          <NavBar />
-        </MaybeShowNavbar>
-        {children}
+        <Toaster
+          richColors
+          position="top-right"
+          toastOptions={{ duration: 1000, closeButton: true }}
+        />
+        <AuthProvider>
+          <MaybeShowNavbar>
+            <NavBar />
+          </MaybeShowNavbar>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

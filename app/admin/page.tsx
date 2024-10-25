@@ -1,44 +1,25 @@
 "use client";
-import { AuthService } from "@/components/services/auth";
-import HotelFootprint from "@/components/system/HotelFootprint/HotelFootprint";
-import SideBar from "@/components/system/SideBar/SideBar";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+
+import dynamic from "next/dynamic";
+import Header from "@/components/system/header/Header";
+import SideBar from "@/components/system/sidebar/SideBar";
+import { withAuth } from "@/components/hoc/withAuth";
+import { useState } from "react";
+import { useAuth } from "@/components/context/authContext";
+
+const Dashboard = dynamic(() => import("@/components/system/Dashboard"));
+const HotelFootprint = dynamic(
+  () => import("@/components/system/hotelFootprint/HotelFootprint")
+);
+
+const SidebarMap: { [key: number]: JSX.Element } = {
+  0: <Dashboard />,
+  1: <HotelFootprint />,
+};
 
 const AdminPage = () => {
-  const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated } = useAuth();
   const [sidebarIndex, setSidebarIndex] = useState<number>(0);
-
-  useEffect(() => {
-    const checkAuthStatus = async () => {
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        toast.error("Unauthorized");
-        router.push("/");
-        return;
-      }
-
-      try {
-        const res = await AuthService.status(token);
-        console.log(res);
-
-        if (!res) {
-          toast.error("Unauthorized");
-          router.push("/");
-          return;
-        }
-
-        setIsAuthenticated(true);
-      } catch (error) {
-        router.push("/");
-        toast.error("Unauthorized");
-      }
-    };
-    checkAuthStatus();
-  }, [router]);
 
   return (
     isAuthenticated && (
@@ -49,11 +30,12 @@ const AdminPage = () => {
         />
 
         <div className="flex-1 text-black overflow-y-auto">
-          <HotelFootprint />
+          <Header />
+          {SidebarMap[sidebarIndex]}
         </div>
       </div>
     )
   );
 };
 
-export default AdminPage;
+export default withAuth(AdminPage);

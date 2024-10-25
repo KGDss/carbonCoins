@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({ image, link }) => {
               >
                 <span className="text-black">Explore</span>
                 <Image
-                  src="/rightArrowBlack.svg"
+                  src="/landing/rightArrowBlack.svg"
                   alt="arrow"
                   height={0}
                   width={0}

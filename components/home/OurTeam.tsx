@@ -22,14 +22,14 @@ const OurTeam = () => {
       </div>
       <div className="flex flex-row justify-between right-0">
         <Image
-          src="/nicki1.svg"
+          src="/landing/nicki1.svg"
           alt="nicki1"
           height={0}
           width={0}
           style={{ width: "46vw", height: "auto" }}
         />
         <Image
-          src="/nicki2.svg"
+          src="/landing/nicki2.svg"
           alt="nicki2"
           height={0}
           width={0}
@@ -39,7 +39,7 @@ const OurTeam = () => {
       <div className="flex justify-center items-center">
         <div className="absolute">
           <Image
-            src="/logo.svg"
+            src="/landing/logo.svg"
             alt="logo"
             height={0}
             width={0}
