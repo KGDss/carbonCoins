@@ -57,8 +57,6 @@ const HotelFootprint = () => {
     },
   };
 
-  //*the greenhouse gas inventory should be a separate component
-
   return (
     <div className="container mx-auto p-8">
       <div className="grid grid-cols-6 gap-4 mb-2 font-bold text-center bg-background-green p-2 text-white">

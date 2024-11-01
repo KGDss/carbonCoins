@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import MyTokenABI from "../../contracts/abi/TokenMng.json";
+import MyTokenABI from "@/contracts/abi/TokenMng.json";
 
 const contractAddress = "0xD6a973d907070A68F51A3885A169fFDF67e365c8";
 

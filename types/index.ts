@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 
-export interface CustomButtonProps {
+export type CustomButtonProps = {
   title?: string;
   containerStyles?: string;
   handleClick?: MouseEventHandler<HTMLButtonElement>;
@@ -10,12 +10,12 @@ export interface CustomButtonProps {
   isDisabled?: boolean;
   height?: number;
   width?: number;
-}
+};
 
-export interface CardProps {
+export type CardProps = {
   image: string;
   link: string;
-}
+};
 
 export type SideBarCardProps = {
   image: string;
@@ -24,18 +24,17 @@ export type SideBarCardProps = {
   onClick: () => void;
 };
 
-// Define the types for TypeScript
-interface Detail {
+type Detail = {
   topic: string;
   storageUnit: string;
   ef: number;
   unit: string;
-}
+};
 
-interface HotelFootprint {
+type HotelFootprint = {
   topic: string;
   details: Detail[];
-}
+};
 
 export type HotelFootprintComponentProps = {
   data: HotelFootprint[];
