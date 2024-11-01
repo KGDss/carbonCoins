@@ -2,14 +2,14 @@
 
 import dynamic from "next/dynamic";
 import Header from "@/components/system/header/Header";
-import SideBar from "@/components/system/other/SideBar";
+import SideBar from "@/components/system/sidebar/SideBar";
 import { withAuth } from "@/components/hoc/withAuth";
 import { useState } from "react";
 import { useAuth } from "@/components/context/authContext";
 
 const Dashboard = dynamic(() => import("@/components/system/Dashboard"));
 const HotelFootprint = dynamic(
-  () => import("@/components/system/test/HotelFootprint")
+  () => import("@/components/system/hf/HotelFootprint")
 );
 
 const SidebarMap: { [key: number]: JSX.Element } = {
