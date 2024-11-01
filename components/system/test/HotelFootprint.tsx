@@ -1,5 +1,5 @@
 "use client";
-import HotelFootprintTemplate from "@/components/system/hotelFootprint/HotelFootprintTemplate";
+import HotelFootprintTemplate from "@/components/system/test/HotelFootprintTemplate";
 import { hotelCF } from "@/constants";
 import {
   BarElement,
