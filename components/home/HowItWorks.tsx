@@ -32,7 +32,7 @@ const HowItWorks = () => {
       <div className="  xl:flex flex-row justify-evenly pb-10">
         <div className="flex mt-0 xl:flex items-center flex-row justify-center basis-1/2 ">
           <Image
-            src="/rightArrow.svg"
+            src="landing/rightArrow.svg"
             alt="arrow"
             height={150}
             width={150}

@@ -33,6 +33,7 @@ export const withAuth = <P extends object>(
         setAuthData({
           isAuthenticated: res.isAuthenticated,
           username: res.username,
+          used_coins: res.used_coins,
         });
       };
 

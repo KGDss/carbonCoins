@@ -18,6 +18,7 @@ const config: Config = {
         "hover-green": "#98C454",
         "mid-green": "#43795D",
         "text-gray": "#4E4B4B",
+        "alert-red": "#FF4040",
       },
       padding: {
         "84": "21rem",
@@ -69,6 +70,11 @@ const config: Config = {
       "2xl": "1536px",
     },
     borderRadius: {
+      sm: "0.125rem",
+      md: "0.375rem",
+      lg: "0.5rem",
+      xl: "0.75rem",
+      "2xl": "1rem",
       "4xl": "82px",
     },
   },

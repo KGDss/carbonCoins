@@ -5,9 +5,11 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface AuthContextType {
   isAuthenticated: boolean;
   username: string | null;
+  used_coins: number | null;
   setAuthData: (data: {
     isAuthenticated: boolean;
     username: string | null;
+    used_coins: number | null;
   }) => void;
 }
 
@@ -19,6 +21,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   const [authData, setAuthData] = useState<AuthContextType>({
     isAuthenticated: false,
     username: null,
+    used_coins: null,
     setAuthData: (data) => setAuthData({ ...authData, ...data }),
   });
 

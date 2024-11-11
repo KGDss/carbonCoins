@@ -164,7 +164,7 @@ export default function TokenPage() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center bg-gray-50 text-text-gray">
+      <div className="">
         <div className="pt-10">
           <h1 className="text-2xl font-bold mb-4 flex flex-col justify-center items-center">
             Admin Carbon Coins Interactions

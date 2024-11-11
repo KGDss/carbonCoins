@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export interface AuthStatusResponse {
+  used_coins: number | null;
   isAuthenticated: boolean;
   username: string | null;
 }
@@ -60,6 +61,7 @@ export const AuthService = {
         return {
           isAuthenticated: true,
           username: res.data.username,
+          used_coins: res.data.used_coins,
         };
       }
     } catch (error: any) {
@@ -69,6 +71,7 @@ export const AuthService = {
     return {
       isAuthenticated: false,
       username: null,
+      used_coins: null,
     };
   },
 };

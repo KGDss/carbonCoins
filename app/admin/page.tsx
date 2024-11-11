@@ -7,9 +7,11 @@ import { withAuth } from "@/components/hoc/withAuth";
 import { useState } from "react";
 import { useAuth } from "@/components/context/authContext";
 
-const Dashboard = dynamic(() => import("@/components/system/Dashboard"));
+const Dashboard = dynamic(
+  () => import("@/components/system/dashboard/Dashboard")
+);
 const HotelFootprint = dynamic(
-  () => import("@/components/system/hotelFootprint/HotelFootprint")
+  () => import("@/components/system/hf/HotelFootprint")
 );
 
 const SidebarMap: { [key: number]: JSX.Element } = {

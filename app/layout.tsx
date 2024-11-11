@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavBar, MaybeShowNavbar } from "@/components/home";
 import { AuthProvider } from "@/components/context/authContext"; // Import your AuthProvider
 import { Toaster } from "sonner";
+import { WalletProvider } from "@/components/context/walletContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,10 +30,12 @@ export default function RootLayout({
           toastOptions={{ duration: 1000, closeButton: true }}
         />
         <AuthProvider>
-          <MaybeShowNavbar>
-            <NavBar />
-          </MaybeShowNavbar>
-          {children}
+          <WalletProvider>
+            <MaybeShowNavbar>
+              <NavBar />
+            </MaybeShowNavbar>
+            {children}
+          </WalletProvider>
         </AuthProvider>
       </body>
     </html>
