@@ -6,10 +6,12 @@ interface AuthContextType {
   isAuthenticated: boolean;
   username: string | null;
   used_coins: number | null;
+  role: string | null;
   setAuthData: (data: {
     isAuthenticated: boolean;
     username: string | null;
     used_coins: number | null;
+    role: string | null;
   }) => void;
 }
 
@@ -22,6 +24,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     isAuthenticated: false,
     username: null,
     used_coins: null,
+    role: null,
     setAuthData: (data) => setAuthData({ ...authData, ...data }),
   });
 

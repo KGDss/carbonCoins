@@ -1,7 +1,7 @@
 // withAuth.tsx
 import React, { useEffect } from "react";
 import { AuthService } from "@/components/services/auth";
-import { useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useAuth } from "@/components/context/authContext";
 
@@ -11,6 +11,7 @@ export const withAuth = <P extends object>(
   const ComponentWithAuth: React.FC<P> = (props) => {
     const { setAuthData } = useAuth();
     const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
       const checkAuthStatus = async () => {
@@ -30,10 +31,17 @@ export const withAuth = <P extends object>(
           return;
         }
 
+        if (pathname.split("/")[1] != res.role?.toLocaleLowerCase()) {
+          router.push("/");
+          toast.error("Unauthorized");
+          return;
+        }
+
         setAuthData({
           isAuthenticated: res.isAuthenticated,
           username: res.username,
           used_coins: res.used_coins,
+          role: res.role,
         });
       };
 

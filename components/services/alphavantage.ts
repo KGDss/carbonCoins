@@ -30,14 +30,13 @@ export const alphaVantageService = {
           firstEntry["4. close"]) *
         100;
 
-      toast.success("success");
       return {
         todayPrice: firstEntry["4. close"],
         changeInPercent,
         timeSeries,
       };
     } catch (error: any) {
-      toast.error(error.response?.data?.message || "Something went wrong");
+      // toast.error(error.response?.data?.message || "Some");
       return {
         todayPrice: null,
         changeInPercent: null,

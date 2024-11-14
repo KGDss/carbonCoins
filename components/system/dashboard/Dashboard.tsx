@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useWallet } from "@/components/context/walletContext";
 import ConnectWallet from "../../system/smartContract/ConnectWallet";
 import GraphPrice from "./GraphPrice";
@@ -6,6 +6,7 @@ import SummaryCard from "./SummaryCard";
 import { alphaVantageService } from "@/components/services/alphavantage";
 import { useAuth } from "@/components/context/authContext";
 import Image from "next/image";
+import { timeSeries } from "@/constants";
 
 const Dashboard = () => {
   const { isConnected, balance } = useWallet();
@@ -14,27 +15,34 @@ const Dashboard = () => {
     todayPrice: number | null;
     changeInPercent: number | null;
   }>({
-    todayPrice: 1000, //*needs to be null when call api
-    changeInPercent: -20, //*needs to be null when call api
+    todayPrice: 1000, // Needs to be null for API call
+    changeInPercent: 20, // Needs to be null for API call
   });
-  const [timeSeries, setTimeSeries] = useState<{} | null>(null);
 
-  // const fetchData = useMemo(() => {
-  //   let fetched = false;
-  //   return async () => {
-  //     if (!fetched) {
-  //       const { todayPrice, changeInPercent } =
-  //         await alphaVantageService.getToday();
+  const [timeSeries, setTimeSeries] = useState<{ [key: string]: any } | null>(
+    null
+  );
 
-  //       setData({ todayPrice, changeInPercent });
-  //       fetched = true;
-  //     }
-  //   };
-  // }, []);
+  useEffect(() => {
+    if (isConnected) {
+      const fetchData = async () => {
+        try {
+          const {
+            todayPrice,
+            changeInPercent,
+            timeSeries: series,
+          } = await alphaVantageService.getToday();
 
-  // useEffect(() => {
-  //   if (isConnected) fetchData();
-  // }, [isConnected, fetchData]);
+          setData({ todayPrice, changeInPercent });
+          setTimeSeries(series);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [isConnected]);
 
   return (
     <div
@@ -53,7 +61,7 @@ const Dashboard = () => {
               description={`${balance.toLocaleString()} tCO2 to claims`}
             />
             <SummaryCard
-              topic="Price per Coin:"
+              topic="Price per coin:"
               main={`${
                 data.todayPrice ? (+data.todayPrice).toFixed(2) + " $" : "ERROR"
               }`}
@@ -101,8 +109,8 @@ const Dashboard = () => {
               description={`${used_coins} tCO2 reduced`}
             />
           </div>
-          <div>
-            <GraphPrice></GraphPrice>
+          <div className="mt-16 ml-10">
+            <GraphPrice timeSeries={timeSeries} />
           </div>
         </div>
       ) : (

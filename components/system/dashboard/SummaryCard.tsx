@@ -18,9 +18,6 @@ const SummaryCard: React.FC<SummaryCardType> = ({
 }) => {
   return (
     <div className="shadow-xl w-3/12 h-40 rounded-2xl mt-10 ml-10 relative border border-solid">
-      {/* <div className="flex flex-col">
-        
-      </div> */}
       <div className="flex gap-5 pt-5 pl-5">
         <Image
           src={"/system/cardLine.svg"}

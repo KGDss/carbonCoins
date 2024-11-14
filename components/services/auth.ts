@@ -10,6 +10,7 @@ export interface AuthStatusResponse {
   used_coins: number | null;
   isAuthenticated: boolean;
   username: string | null;
+  role: string | null;
 }
 
 export const AuthService = {
@@ -60,6 +61,7 @@ export const AuthService = {
       if (res.status === 200 && res.data && res.data.username) {
         return {
           isAuthenticated: true,
+          role: res.data.role,
           username: res.data.username,
           used_coins: res.data.used_coins,
         };
@@ -72,6 +74,7 @@ export const AuthService = {
       isAuthenticated: false,
       username: null,
       used_coins: null,
+      role: null,
     };
   },
 };

@@ -1,11 +1,45 @@
-import React from "react";
+"use client";
 
-const UserPage = () => {
+import dynamic from "next/dynamic";
+import Header from "@/components/system/header/Header";
+import SideBar from "@/components/system/sidebar/SideBar";
+import { withAuth } from "@/components/hoc/withAuth";
+import { useState } from "react";
+import { useAuth } from "@/components/context/authContext";
+
+const Dashboard = dynamic(
+  () => import("@/components/system/dashboard/Dashboard")
+);
+const HotelFootprint = dynamic(
+  () => import("@/components/system/hf/HotelFootprint")
+);
+const Transfer = dynamic(() => import("@/components/system/transfer/Transfer"));
+
+const SidebarMap: { [key: number]: JSX.Element } = {
+  0: <Dashboard />,
+  1: <HotelFootprint />,
+  2: <Transfer />,
+};
+
+const AdminPage = () => {
+  const { isAuthenticated } = useAuth();
+  const [sidebarIndex, setSidebarIndex] = useState<number>(0);
+
   return (
-    <div className="border-solid border-2 border-black text-black">
-      UserDash
-    </div>
+    isAuthenticated && (
+      <div className="flex h-screen">
+        <SideBar
+          sideBarIndex={sidebarIndex}
+          setSidebarIndex={setSidebarIndex}
+        />
+
+        <div className="flex-1 text-black overflow-y-auto">
+          <Header />
+          {SidebarMap[sidebarIndex]}
+        </div>
+      </div>
+    )
   );
 };
 
-export default UserPage;
+export default withAuth(AdminPage);
