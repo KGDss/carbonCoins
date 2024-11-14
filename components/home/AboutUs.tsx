@@ -87,7 +87,7 @@ const AboutMe = () => {
           can give it a try
           <br />
           <Link
-            href={"/admin"}
+            href={"/user"}
             className="text-2xl hover:cursor-pointer underline"
           >
             Dashboard
