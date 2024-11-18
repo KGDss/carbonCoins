@@ -26,7 +26,8 @@ export const UserService = {
 
       return response.data;
     } catch (error: any) {
-      toast.error(error.response?.data?.message || "Login failed");
+      console.log(error);
+      toast.error(error.response?.data?.message || "Get all user failed");
     }
   },
   connectWalletFirstTime: async ({

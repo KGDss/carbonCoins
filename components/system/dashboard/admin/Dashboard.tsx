@@ -6,7 +6,7 @@ import UserSummary from "./UserSummary";
 
 const Dashboard = () => {
   return (
-    <div className="border border-solid h-[93.4%]">
+    <div className="border border-solid h-[93.4%] px-4">
       <UserSummary />
       <div className="flex justify-between gap-10">
         <div className="w-full">
