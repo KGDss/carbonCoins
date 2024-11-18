@@ -3,9 +3,14 @@ import Image from "next/image";
 import React from "react";
 import { useWallet } from "@/components/context/walletContext";
 import CustomButton from "@/components/CustomButton";
+import { useAuth } from "@/components/context/authContext";
 
 const ConnectWallet = () => {
   const { connectWallet } = useWallet();
+  const { username } = useAuth();
+  const handleClick = async () => {
+    if (username) await connectWallet(username);
+  };
 
   return (
     <div className="shadow-lg h-4/6 w-3/6 rounded-2xl flex flex-col gap-20 items-center justify-center">
@@ -18,7 +23,7 @@ const ConnectWallet = () => {
       />
       <CustomButton
         title="Connect to your wallet"
-        handleClick={connectWallet}
+        handleClick={handleClick}
         containerStyles="shadow-lg rounded-lg px-7 py-1 text-mid-green font-medium text-2xl hover:cursor"
       />
     </div>

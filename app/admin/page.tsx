@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useAuth } from "@/components/context/authContext";
 
 const Dashboard = dynamic(
-  () => import("@/components/system/dashboard/Dashboard")
+  () => import("@/components/system/dashboard/admin/Dashboard")
 );
 const HotelFootprint = dynamic(
   () => import("@/components/system/hf/HotelFootprint")

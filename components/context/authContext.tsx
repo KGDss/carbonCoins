@@ -1,19 +1,11 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import { AuthStatusResponse } from "../services/auth";
 
-interface AuthContextType {
-  isAuthenticated: boolean;
-  username: string | null;
-  used_coins: number | null;
-  role: string | null;
-  setAuthData: (data: {
-    isAuthenticated: boolean;
-    username: string | null;
-    used_coins: number | null;
-    role: string | null;
-  }) => void;
-}
+type AuthContextType = AuthStatusResponse & {
+  setAuthData: (data: AuthStatusResponse) => void;
+};
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -22,9 +14,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [authData, setAuthData] = useState<AuthContextType>({
     isAuthenticated: false,
+    id: null,
     username: null,
     used_coins: null,
     role: null,
+    wallet_address: null,
     setAuthData: (data) => setAuthData({ ...authData, ...data }),
   });
 

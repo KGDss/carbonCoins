@@ -1,19 +1,10 @@
 import { useWallet } from "@/components/context/walletContext";
 import Image from "next/image";
 import React from "react";
+import { truncateAddress } from "../smartContract/functions";
 
 const AccountSum = () => {
   const { walletAddress, balance } = useWallet();
-  function truncateAddress(
-    address: string,
-    startLength: number = 6,
-    endLength: number = 4
-  ): string {
-    if (address.length <= startLength + endLength) {
-      return address;
-    }
-    return `${address.slice(0, startLength)}...${address.slice(-endLength)}`;
-  }
 
   return (
     <div className="h-[55vh] w-[38%] top-52 rounded-4xl bg-white z-40 shadow-lg">

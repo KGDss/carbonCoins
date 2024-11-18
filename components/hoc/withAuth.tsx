@@ -39,14 +39,16 @@ export const withAuth = <P extends object>(
 
         setAuthData({
           isAuthenticated: res.isAuthenticated,
+          id: res.id,
           username: res.username,
           used_coins: res.used_coins,
           role: res.role,
+          wallet_address: res.wallet_address,
         });
       };
 
       checkAuthStatus();
-    }, [router, setAuthData]);
+    }, [pathname, router, setAuthData]);
 
     return <WrappedComponent {...props} />;
   };

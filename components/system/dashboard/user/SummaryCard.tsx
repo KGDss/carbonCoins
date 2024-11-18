@@ -9,7 +9,6 @@ type SummaryCardType = {
   descriptionTag?: React.ReactNode;
 };
 
-//! need dynamic in total coins, 2024 and left to claim for other parts
 const SummaryCard: React.FC<SummaryCardType> = ({
   topic,
   main,

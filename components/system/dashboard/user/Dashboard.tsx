@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useWallet } from "@/components/context/walletContext";
-import ConnectWallet from "../../system/smartContract/ConnectWallet";
-import GraphPrice from "./GraphPrice";
+import ConnectWallet from "../../smartContract/ConnectWallet";
+import GraphPrice from "../GraphPrice";
 import SummaryCard from "./SummaryCard";
 import { alphaVantageService } from "@/components/services/alphavantage";
 import { useAuth } from "@/components/context/authContext";
@@ -19,30 +19,30 @@ const Dashboard = () => {
     changeInPercent: 20, // Needs to be null for API call
   });
 
-  const [timeSeries, setTimeSeries] = useState<{ [key: string]: any } | null>(
-    null
-  );
+  // const [timeSeries, setTimeSeries] = useState<{ [key: string]: any } | null>(
+  //   null
+  // );
 
-  useEffect(() => {
-    if (isConnected) {
-      const fetchData = async () => {
-        try {
-          const {
-            todayPrice,
-            changeInPercent,
-            timeSeries: series,
-          } = await alphaVantageService.getToday();
+  // useEffect(() => {
+  //   if (isConnected) {
+  //     const fetchData = async () => {
+  //       try {
+  //         const {
+  //           todayPrice,
+  //           changeInPercent,
+  //           timeSeries: series,
+  //         } = await alphaVantageService.getToday();
 
-          setData({ todayPrice, changeInPercent });
-          setTimeSeries(series);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
+  //         setData({ todayPrice, changeInPercent });
+  //         setTimeSeries(series);
+  //       } catch (error) {
+  //         console.error("Error fetching data:", error);
+  //       }
+  //     };
 
-      fetchData();
-    }
-  }, [isConnected]);
+  //     fetchData();
+  //   }
+  // }, [isConnected]);
 
   return (
     <div
@@ -110,7 +110,7 @@ const Dashboard = () => {
             />
           </div>
           <div className="mt-16 ml-10">
-            <GraphPrice timeSeries={timeSeries} />
+            <GraphPrice timeSeries={timeSeries} width="95%" height="600px" />
           </div>
         </div>
       ) : (

@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useAuth } from "@/components/context/authContext";
 
 const Dashboard = dynamic(
-  () => import("@/components/system/dashboard/Dashboard")
+  () => import("@/components/system/dashboard/user/Dashboard")
 );
 const HotelFootprint = dynamic(
   () => import("@/components/system/hf/HotelFootprint")
@@ -26,18 +26,20 @@ const AdminPage = () => {
   const [sidebarIndex, setSidebarIndex] = useState<number>(0);
 
   return (
-    // isAuthenticated && (
-    <div className="flex h-screen">
-      <SideBar sideBarIndex={sidebarIndex} setSidebarIndex={setSidebarIndex} />
+    isAuthenticated && (
+      <div className="flex h-screen">
+        <SideBar
+          sideBarIndex={sidebarIndex}
+          setSidebarIndex={setSidebarIndex}
+        />
 
-      <div className="flex-1 text-black overflow-y-auto">
-        <Header />
-        {SidebarMap[sidebarIndex]}
+        <div className="flex-1 text-black overflow-y-auto">
+          <Header />
+          {SidebarMap[sidebarIndex]}
+        </div>
       </div>
-    </div>
-    // )
+    )
   );
 };
 
-// export default withAuth(AdminPage);
-export default AdminPage;
+export default withAuth(AdminPage);

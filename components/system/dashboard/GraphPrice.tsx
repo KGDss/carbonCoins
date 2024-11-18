@@ -27,8 +27,12 @@ ChartJS.register(
 
 const GraphPrice = ({
   timeSeries,
+  width,
+  height,
 }: {
   timeSeries: { [key: string]: any } | null;
+  width: string;
+  height: string;
 }) => {
   const chartRef = useRef(null);
 
@@ -113,7 +117,7 @@ const GraphPrice = ({
   };
 
   return (
-    <div style={{ width: "95%", height: "600px", margin: "" }}>
+    <div style={{ width: width, height: height }}>
       <div className="flex justify-end mb-2"></div>
       <Line ref={chartRef} data={data} options={options as any} />
     </div>

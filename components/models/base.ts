@@ -34,3 +34,7 @@ export type PaginationFilter = {
   reverse?: number;
   query?: number;
 };
+
+export type BaseAuth = {
+  token: string;
+};

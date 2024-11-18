@@ -5,13 +5,15 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 import { ethers } from "ethers";
 import { toast } from "sonner";
 import MyTokenABI from "@/contracts/abi/TokenMng.json";
+import { useAuth } from "./authContext";
+import { UserService } from "../services/user";
 
 interface WalletContextType {
   walletAddress: string | null;
   isConnected: boolean;
   signer: ethers.JsonRpcSigner | null;
   balance: number;
-  connectWallet: () => Promise<void>;
+  connectWallet: (username: string) => Promise<void>;
 }
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
@@ -23,21 +25,42 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [balance, setBalance] = useState<number>(0);
   const [signer, setSigner] = useState<ethers.JsonRpcSigner | null>(null);
+  const { wallet_address, id } = useAuth();
 
   const isConnected = Boolean(walletAddress);
 
-  const connectWallet = async () => {
+  const connectWallet = async (username: string) => {
     if (typeof (window as any).ethereum !== "undefined") {
       try {
         const provider = new ethers.BrowserProvider((window as any).ethereum);
         const signer = await provider.getSigner();
         const address = await signer.getAddress();
+
+        if (wallet_address !== null && wallet_address !== address) {
+          toast.error(
+            "Please use the same wallet you first connected with this account"
+          );
+          return;
+        }
+
         const contract = new ethers.Contract(
           contractAddress,
           MyTokenABI,
           signer
         );
         const balance = await contract.balanceOf(address);
+        const total_coins = +ethers.formatEther(balance.toString());
+
+        if (wallet_address === null) {
+          console.log(address, balance);
+          await UserService.connectWalletFirstTime({
+            wallet_address: address,
+            total_coins,
+            id,
+            token: localStorage.getItem("token") ?? "",
+          });
+        }
+
         setWalletAddress(address);
         setSigner(signer);
         setBalance(+ethers.formatEther(balance.toString()));

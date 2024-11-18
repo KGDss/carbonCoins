@@ -27,7 +27,7 @@ export default function RootLayout({
         <Toaster
           richColors
           position="top-right"
-          toastOptions={{ duration: 1000, closeButton: true }}
+          toastOptions={{ duration: 2000, closeButton: true }}
         />
         <AuthProvider>
           <WalletProvider>
