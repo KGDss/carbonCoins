@@ -13,12 +13,14 @@ const Dashboard = dynamic(
 const HotelFootprint = dynamic(
   () => import("@/components/system/hf/HotelFootprint")
 );
-const Transfer = dynamic(() => import("@/components/system/transfer/Transfer"));
+const TokenPage = dynamic(
+  () => import("@/components/system/smartContract/token")
+);
 
 const SidebarMap: { [key: number]: JSX.Element } = {
   0: <Dashboard />,
   1: <HotelFootprint />,
-  2: <Transfer />,
+  2: <TokenPage />,
 };
 
 const AdminPage = () => {

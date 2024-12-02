@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import MyTokenABI from "@/contracts/abi/TokenMng.json";
+import ConnectWallet from "./ConnectWallet";
+import { addTokenToWallet } from "./functions";
+import CustomButton from "@/components/CustomButton";
 
 const contractAddress = "0xD6a973d907070A68F51A3885A169fFDF67e365c8";
 
@@ -112,35 +115,9 @@ export default function TokenPage() {
     }
   }
 
-  async function addTokenToWallet() {
-    try {
-      const tokenAddress = contractAddress;
-      const tokenSymbol = symbol;
-      const tokenDecimals = 18; // Adjust if your token uses different decimals
-      const tokenImage = ""; // Provide the URL of your token image if available
-
-      const wasAdded = await (window as any).ethereum.request({
-        method: "wallet_watchAsset",
-        params: {
-          type: "ERC20",
-          options: {
-            address: tokenAddress,
-            symbol: tokenSymbol,
-            decimals: tokenDecimals,
-            image: tokenImage,
-          },
-        },
-      });
-
-      if (wasAdded) {
-        console.log("Token added to wallet!");
-      } else {
-        console.log("Token not added to wallet.");
-      }
-    } catch (error) {
-      console.error("Error adding token to wallet:", error);
-    }
-  }
+  const handleClick = async () => {
+    await addTokenToWallet();
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -349,8 +326,12 @@ export default function TokenPage() {
               </div>
             </div>
           </div>
+          <CustomButton
+            title="Add token to your wallet"
+            containerStyles="bg-white text-mid-green py-1 px-5 text-4xl rounded-4xl shadow-xl "
+            handleClick={handleClick}
+          />
         </div>
-        <button onClick={addTokenToWallet}> ADD TOKEN TO WALLET </button>
       </div>
     </>
   );

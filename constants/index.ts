@@ -62,7 +62,7 @@ export let sideBarOptions = [
     isSelected: true,
   },
   {
-    title: "Market",
+    title: "GHG Inventory",
     notSelectedUrl: "/sideBar/market.svg",
     selectedUrl: "/sideBar/marketSelected.svg",
     isSelected: false,

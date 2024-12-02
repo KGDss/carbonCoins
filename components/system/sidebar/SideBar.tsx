@@ -3,6 +3,7 @@ import { sideBarOptions } from "@/constants";
 import Image from "next/image";
 import React from "react";
 import SideBarOptionCard from "./SideBarOptionCards";
+import { useAuth } from "@/components/context/authContext";
 
 type SideBarIndexType = {
   sideBarIndex: number;
@@ -13,6 +14,7 @@ const SideBar: React.FC<SideBarIndexType> = ({
   sideBarIndex,
   setSidebarIndex,
 }) => {
+  const { role } = useAuth();
   return (
     <div className="w-2/12 h-screen bg-background-green overflow-hidden sticky top-0">
       <div>
@@ -51,7 +53,13 @@ const SideBar: React.FC<SideBarIndexType> = ({
             image={
               index === sideBarIndex ? item.selectedUrl : item.notSelectedUrl
             }
-            title={item.title}
+            title={
+              item.title != "Transfer"
+                ? item.title
+                : role == "ADMIN"
+                ? "Carbon Coins"
+                : "Transfer"
+            }
             isSelected={index === sideBarIndex}
             onClick={() => {
               setSidebarIndex(index);
