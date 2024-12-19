@@ -1,8 +1,10 @@
 import React from "react";
-import GraphPrice from "../GraphPrice";
-import TokenVolume from "./TokenVolume";
 import { timeSeries } from "@/constants";
+import dynamic from "next/dynamic"; // Import dynamic for lazy loading
 import UserSummary from "./UserSummary";
+
+const GraphPrice = dynamic(() => import("../GraphPrice"), { ssr: false });
+const TokenVolume = dynamic(() => import("./TokenVolume"), { ssr: false });
 
 const Dashboard = () => {
   return (
@@ -14,7 +16,7 @@ const Dashboard = () => {
             Carbon Coins Price
           </span>
           <div className="rounded-2xl shadow-lg">
-            {/* <GraphPrice timeSeries={timeSeries} height="400px" width="95%" /> */}
+            <GraphPrice timeSeries={timeSeries} height="400px" width="95%" />
           </div>
         </div>
         <div className="w-full">
@@ -22,7 +24,7 @@ const Dashboard = () => {
             Carbon Coins Volume
           </span>
           <div className="rounded-2xl shadow-lg">
-            {/* <TokenVolume timeSeries={timeSeries} height="400px" width="95%" /> */}
+            <TokenVolume timeSeries={timeSeries} height="400px" width="95%" />
           </div>
         </div>
       </div>
