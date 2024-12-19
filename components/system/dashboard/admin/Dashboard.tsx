@@ -14,7 +14,7 @@ const Dashboard = () => {
             Carbon Coins Price
           </span>
           <div className="rounded-2xl shadow-lg">
-            <GraphPrice timeSeries={timeSeries} height="400px" width="95%" />
+            {/* <GraphPrice timeSeries={timeSeries} height="400px" width="95%" /> */}
           </div>
         </div>
         <div className="w-full">
@@ -22,7 +22,7 @@ const Dashboard = () => {
             Carbon Coins Volume
           </span>
           <div className="rounded-2xl shadow-lg">
-            <TokenVolume timeSeries={timeSeries} height="400px" width="95%" />
+            {/* <TokenVolume timeSeries={timeSeries} height="400px" width="95%" /> */}
           </div>
         </div>
       </div>
