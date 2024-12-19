@@ -66,11 +66,11 @@ const AboutMe = () => {
 
       <div className="flex flex-col space-y-8 justify-center items-center">
         <span className="text-center justify-center w-11/12  mt-10 text-xl leading-relaxed">
-          {/* Hi, I am Nicki Julius Hartmann, a 4th year Digital Engineering student
+          Hi, I am Nicki Julius Hartmann, a 4th year Digital Engineering student
           at Prince of Songkhla University,Phuket Campus, working on this Carbon
           Coins application hoping it would be able to help fight climate change
-          !! <br /> <br /> */}
-          If you're reading this, it's probably because I don't have a portfolio
+          !! <br /> <br />
+          {/* If you're reading this, it's probably because I don't have a portfolio
           website just yet—so I submit this project as my way of showcasing my
           passion and skills in web development! Though, I'm still working on
           this project here are some other paths that is not yet available
@@ -93,7 +93,7 @@ const AboutMe = () => {
             Dashboard
           </Link>
           - I'm working on simplifying the estimation of GHGs for hotels but it
-          will change to real dashboard soon
+          will change to real dashboard soon */}
         </span>
         <button
           className="hover:text-hover-green underline"

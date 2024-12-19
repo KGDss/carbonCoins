@@ -9,21 +9,21 @@ const UserSummary = () => {
   const [userData, setUserData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const getUser = async () => {
-    try {
-      const token = localStorage.getItem("token");
+  // const getUser = async () => {
+  //   try {
+  //     const token = localStorage.getItem("token");
 
-      if (token) {
-        const data = await UserService.getAll(token);
-        console.log("User Data:", data);
-        setUserData(data.entities || []);
-      }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    } finally {
-      setLoading(false); // Ensure loading stops even if there's an error
-    }
-  };
+  //     if (token) {
+  //       const data = await UserService.getAll(token);
+  //       console.log("User Data:", data);
+  //       setUserData(data.entities || []);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching user data:", error);
+  //   } finally {
+  //     setLoading(false); // Ensure loading stops even if there's an error
+  //   }
+  // };
 
   // useEffect(() => {
   //   getUser();
