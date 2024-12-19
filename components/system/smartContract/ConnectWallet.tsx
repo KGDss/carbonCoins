@@ -10,6 +10,7 @@ const ConnectWallet = () => {
   const { username } = useAuth();
   const handleClick = async () => {
     if (username) await connectWallet(username);
+    else await connectWallet("User");
   };
 
   return (

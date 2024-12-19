@@ -10,7 +10,9 @@ const Header = () => {
   return (
     <div className="text-black sticky top-0 bg-white shadow-lg h-[4em]">
       <div className="flex justify-between items-center px-5 h-full">
-        <div className="text-lg font-semibold">Welcome Back, {username}</div>
+        <div className="text-lg font-semibold">
+          Welcome Back, {username ? username : "User"}
+        </div>
         <div className="flex gap-12 items-center">
           <Image src="/header/headerLine.svg" alt="line" width={1} height={5} />
           <Message />

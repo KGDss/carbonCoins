@@ -1,13 +1,21 @@
 import React, { FormEvent, useState } from "react";
 import CustomButton from "@/components/CustomButton";
 import { transferToken } from "../smartContract/functions";
+import { useAuth } from "@/components/context/authContext";
+import { useWallet } from "@/components/context/walletContext";
 
 export const TransferComponent = () => {
+  const { id, wallet_address } = useAuth();
+  const { balance, updateBalance } = useWallet();
   const [account, setAccount] = useState("");
   const [amount, setAmount] = useState("");
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await transferToken(account, amount);
+    const token = localStorage.getItem("token");
+    if (id && wallet_address && token) {
+      await transferToken(account, amount, id, wallet_address, token);
+      updateBalance(balance - +amount);
+    }
   };
   return (
     <div className="h-[55vh] w-[38%] top-52 rounded-4xl bg-white z-40 shadow-lg">

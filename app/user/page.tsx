@@ -26,20 +26,18 @@ const AdminPage = () => {
   const [sidebarIndex, setSidebarIndex] = useState<number>(0);
 
   return (
-    isAuthenticated && (
-      <div className="flex h-screen">
-        <SideBar
-          sideBarIndex={sidebarIndex}
-          setSidebarIndex={setSidebarIndex}
-        />
+    // isAuthenticated && (
+    <div className="flex h-screen">
+      <SideBar sideBarIndex={sidebarIndex} setSidebarIndex={setSidebarIndex} />
 
-        <div className="flex-1 text-black overflow-y-auto">
-          <Header />
-          {SidebarMap[sidebarIndex]}
-        </div>
+      <div className="flex-1 text-black overflow-y-auto">
+        <Header />
+        {SidebarMap[sidebarIndex]}
       </div>
-    )
+    </div>
   );
+  // );
 };
 
-export default withAuth(AdminPage);
+// export default withAuth(AdminPage);
+export default AdminPage;

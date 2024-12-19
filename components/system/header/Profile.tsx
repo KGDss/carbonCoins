@@ -19,7 +19,7 @@ const Profile = () => {
         alt="Dummy Image"
       />
       <div className="flex items-center gap-1">
-        {username}
+        {username ? username : "User"}
         <Image
           src="/header/profileArrow.svg"
           height={10}

@@ -124,6 +124,90 @@ export const hotelCF = [
   },
 ];
 
+export const mockUserData = [
+  {
+    id: 1,
+    email: "john.doe@example.com",
+    wallet_address: "0x3e2Fc3e4947734BF87D9818a5F95b724f9f2c1c3",
+    total_coins: 500,
+    used_coins: 100,
+    role: "ADMIN",
+  },
+  {
+    id: 2,
+    email: "jane.smith@example.com",
+    wallet_address: "0x7bA4F56eE7A873FB91E12345Df7c8fBd839ac72B",
+    total_coins: 1200,
+    used_coins: 300,
+    role: "USER",
+  },
+  {
+    id: 3,
+    email: "mark.jones@example.com",
+    wallet_address: "0x1A7fBbF2A123Ff83d5aB839f12Dbf4dF89AbF123",
+    total_coins: 800,
+    used_coins: 150,
+    role: "USER",
+  },
+  {
+    id: 4,
+    email: "lucy.williams@example.com",
+    wallet_address: null, // No wallet connected
+    total_coins: 0,
+    used_coins: 0,
+    role: "USER",
+  },
+  {
+    id: 5,
+    email: "michael.brown@example.com",
+    wallet_address: "0x2C9FcA83D1eAb567CbF1A7aBc9F8123AbF81dFe2",
+    total_coins: 950,
+    used_coins: 200,
+    role: "USER",
+  },
+  {
+    id: 6,
+    email: "emily.davis@example.com",
+    wallet_address: "0x4A3f9bC4D9AfB83Df1BAb8C3E712F3e8BaDFcA81",
+    total_coins: 400,
+    used_coins: 50,
+    role: "USER",
+  },
+  {
+    id: 7,
+    email: "daniel.wilson@example.com",
+    wallet_address: "0x7E4Df12B9c81aBf3d12Fb9C34AfBc123B8fDF81E",
+    total_coins: 300,
+    used_coins: 80,
+    role: "ADMIN",
+  },
+  {
+    id: 8,
+    email: "sarah.moore@example.com",
+    wallet_address: null, // No wallet connected
+    total_coins: 0,
+    used_coins: 0,
+    role: "USER",
+  },
+  {
+    id: 9,
+    email: "david.taylor@example.com",
+    wallet_address: "0x6C1AbF81eBc94DfE82Af1A3Fb81d3Fb912Df6cAB",
+    total_coins: 1100,
+    used_coins: 400,
+    role: "USER",
+  },
+  {
+    id: 10,
+    email: "laura.anderson@example.com",
+    wallet_address: "0x8F1Bc9F3A3DfE8B2Fb81A7Bc9F123FbE92D1c8f6",
+    total_coins: 750,
+    used_coins: 100,
+    role: "USER",
+  },
+];
+
+
 export const timeSeries = {
   "2024-11-11": {
     "1. open": "441.62000000",
@@ -2576,3 +2660,4 @@ export const timeSeries = {
     "5. volume": "14696.23081096",
   },
 };
+

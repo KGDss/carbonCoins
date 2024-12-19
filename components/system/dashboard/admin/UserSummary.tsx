@@ -3,6 +3,7 @@
 import { UserService } from "@/components/services/user";
 import React, { useEffect, useState } from "react";
 import { truncateAddress } from "../../smartContract/functions";
+import { mockUserData } from "@/constants";
 
 const UserSummary = () => {
   const [userData, setUserData] = useState<any[]>([]);
@@ -11,12 +12,11 @@ const UserSummary = () => {
   const getUser = async () => {
     try {
       const token = localStorage.getItem("token");
-      console.log("Token:", token);
 
       if (token) {
         const data = await UserService.getAll(token);
         console.log("User Data:", data);
-        setUserData(data.entities || []); // Save entities in state
+        setUserData(data.entities || []);
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -48,7 +48,7 @@ const UserSummary = () => {
               </tr>
             </thead>
             <tbody>
-              {userData.map((user) => (
+              {mockUserData.map((user) => (
                 <tr key={user.id} className="text-center">
                   <td className="px-4 py-1">{user.id}</td>
                   <td className="px-4 py-1">{user.email || "N/A"}</td>

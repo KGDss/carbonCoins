@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import MyTokenABI from "@/contracts/abi/TokenMng.json";
+import { UserService } from "@/components/services/user";
 
 const contractAddress = "0xD6a973d907070A68F51A3885A169fFDF67e365c8";
 let tName = "";
@@ -15,7 +16,13 @@ const getContract = async () => {
   return new ethers.Contract(contractAddress, MyTokenABI, await getSigner());
 };
 
-export const transferToken = async (account: string, amount: string) => {
+export const transferToken = async (
+  account: string,
+  amount: string,
+  id: number,
+  wallet_address: string,
+  token: string
+) => {
   if (!account || !amount) {
     alert("Please fill Account and Amount");
     return;
@@ -23,6 +30,12 @@ export const transferToken = async (account: string, amount: string) => {
   try {
     const myTokenContract = await getContract();
     await myTokenContract.transfer(account, ethers.parseEther(amount));
+
+    const balance = await myTokenContract.balanceOf(wallet_address); // This is the destination address; we want the sender's balance instead
+    const formattedBalance = ethers.formatEther(balance); // Convert from Wei to Ether
+
+    await UserService.updateBalance(id, token, +formattedBalance - +amount);
+
     console.log("Tokens transferred successfully!");
   } catch (error) {
     console.error("Error transferring tokens:", error);

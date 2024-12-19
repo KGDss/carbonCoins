@@ -20,7 +20,7 @@ export type CardProps = {
 export type SideBarCardProps = {
   image: string;
   title: string;
-  isSelected: boolean;
+  isSelected?: boolean;
   onClick: () => void;
 };
 

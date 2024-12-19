@@ -105,8 +105,8 @@ const Dashboard = () => {
             />
             <SummaryCard
               topic="Used coins:"
-              main={`${used_coins}`}
-              description={`${used_coins} tCO2 reduced`}
+              main={`${used_coins ? used_coins : 0}`}
+              description={`${used_coins ? used_coins : 0} tCO2 reduced`}
             />
           </div>
           <div className="mt-16 ml-10">

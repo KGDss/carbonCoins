@@ -14,6 +14,7 @@ interface WalletContextType {
   signer: ethers.JsonRpcSigner | null;
   balance: number;
   connectWallet: (username: string) => Promise<void>;
+  updateBalance: (balance: number) => void;
 }
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
@@ -72,9 +73,21 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
+  const updateBalance = (balance: number) => {
+    setBalance(balance); // Update the balance in context
+    toast.success("Balance updated successfully");
+  };
+
   return (
     <WalletContext.Provider
-      value={{ walletAddress, isConnected, signer, balance, connectWallet }}
+      value={{
+        walletAddress,
+        isConnected,
+        signer,
+        balance,
+        connectWallet,
+        updateBalance,
+      }}
     >
       {children}
     </WalletContext.Provider>

@@ -53,7 +53,7 @@ export const UserService = {
       return response.data;
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response?.data?.message || "Login failed jaja");
+      toast.error(error.response?.data?.message || "Cannot set wallet");
     }
   },
   register: async ({ username, password, email }: RegisterDto) => {
@@ -106,5 +106,23 @@ export const UserService = {
       used_coins: null,
       role: null,
     };
+  },
+  updateBalance: async (id: number, token: string, total: number) => {
+    try {
+      const response = await axios.patch(
+        `${API_BASE_URL}/user/${id}`,
+        { total_coins: total },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success("success");
+      return response.data;
+    } catch (error: any) {
+      toast.error(error.response?.data?.message || "Update failed");
+      console.log(error);
+    }
   },
 };

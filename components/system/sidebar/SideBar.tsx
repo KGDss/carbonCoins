@@ -4,6 +4,8 @@ import Image from "next/image";
 import React from "react";
 import SideBarOptionCard from "./SideBarOptionCards";
 import { useAuth } from "@/components/context/authContext";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 type SideBarIndexType = {
   sideBarIndex: number;
@@ -15,6 +17,14 @@ const SideBar: React.FC<SideBarIndexType> = ({
   setSidebarIndex,
 }) => {
   const { role } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    toast.success("Logout successfully");
+    router.push("/");
+  };
+
   return (
     <div className="w-2/12 h-screen bg-background-green overflow-hidden sticky top-0">
       <div>
@@ -64,8 +74,13 @@ const SideBar: React.FC<SideBarIndexType> = ({
             onClick={() => {
               setSidebarIndex(index);
             }}
-          ></SideBarOptionCard>
+          />
         ))}
+        <SideBarOptionCard
+          image="./sideBar/logout.svg"
+          title={"Logout"}
+          onClick={handleLogout}
+        />
       </div>
       <div className="absolute bottom-0 w-full flex justify-center">
         <Image
