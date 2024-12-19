@@ -1,12 +1,16 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { useWallet } from "@/components/context/walletContext";
 import ConnectWallet from "../../smartContract/ConnectWallet";
-import GraphPrice from "../GraphPrice";
+import dynamic from "next/dynamic"; // For dynamic import
 import SummaryCard from "./SummaryCard";
-import { alphaVantageService } from "@/components/services/alphavantage";
 import { useAuth } from "@/components/context/authContext";
 import Image from "next/image";
 import { timeSeries } from "@/constants";
+
+// Dynamically import the GraphPrice component
+const GraphPrice = dynamic(() => import("../GraphPrice"), { ssr: false });
 
 const Dashboard = () => {
   const { isConnected, balance } = useWallet();
@@ -18,31 +22,6 @@ const Dashboard = () => {
     todayPrice: 1000, // Needs to be null for API call
     changeInPercent: 20, // Needs to be null for API call
   });
-
-  // const [timeSeries, setTimeSeries] = useState<{ [key: string]: any } | null>(
-  //   null
-  // );
-
-  // useEffect(() => {
-  //   if (isConnected) {
-  //     const fetchData = async () => {
-  //       try {
-  //         const {
-  //           todayPrice,
-  //           changeInPercent,
-  //           timeSeries: series,
-  //         } = await alphaVantageService.getToday();
-
-  //         setData({ todayPrice, changeInPercent });
-  //         setTimeSeries(series);
-  //       } catch (error) {
-  //         console.error("Error fetching data:", error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }
-  // }, [isConnected]);
 
   return (
     <div
@@ -86,7 +65,7 @@ const Dashboard = () => {
                       <div className="flex">
                         <Image
                           src={"/system/negativeArrow.svg"}
-                          alt="positiveArrow"
+                          alt="negativeArrow"
                           height={0}
                           width={0}
                           className="w-2 mr-1"
