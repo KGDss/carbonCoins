@@ -18,7 +18,7 @@ const TokenPage = dynamic(
 );
 
 const SidebarMap: { [key: number]: JSX.Element } = {
-  0: <Dashboard />,
+  // 0: <Dashboard />,
   1: <HotelFootprint />,
   2: <TokenPage />,
 };
