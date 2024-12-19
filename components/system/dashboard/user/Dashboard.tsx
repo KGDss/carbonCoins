@@ -110,7 +110,7 @@ const Dashboard = () => {
             />
           </div>
           <div className="mt-16 ml-10">
-            {/* <GraphPrice timeSeries={timeSeries} width="95%" height="600px" /> */}
+            <GraphPrice timeSeries={timeSeries} width="95%" height="600px" />
           </div>
         </div>
       ) : (

@@ -127,7 +127,7 @@ const GraphPrice = ({
 
   return (
     <div style={{ width: width, height: height }}>
-      <Line ref={chartRef} data={data} options={options as any} />
+      <Line data={data} options={options as any} />
     </div>
   );
 };

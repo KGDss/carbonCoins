@@ -29,7 +29,7 @@ const SideBar: React.FC<SideBarIndexType> = ({
     <div className="w-2/12 h-screen bg-background-green overflow-hidden sticky top-0">
       <div>
         <Image
-          src="/sidebar/logoName.svg"
+          src="/sideBar/logoName.svg"
           alt="logoname"
           width={250}
           height={20}
