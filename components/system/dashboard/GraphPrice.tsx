@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+"use client"; // Ensure this component runs only on the client side
+
+import React, { useRef, useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -35,6 +37,13 @@ const GraphPrice = ({
   height: string;
 }) => {
   const chartRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Ensures the component renders only on the client
+  }, []);
+
+  if (!isClient) return null; // Prevent rendering on the server
 
   if (!timeSeries) return <div>Loading chart...</div>;
 
@@ -118,7 +127,6 @@ const GraphPrice = ({
 
   return (
     <div style={{ width: width, height: height }}>
-      <div className="flex justify-end mb-2"></div>
       <Line ref={chartRef} data={data} options={options as any} />
     </div>
   );

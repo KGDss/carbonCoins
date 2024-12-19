@@ -7,7 +7,7 @@ import { mockUserData } from "@/constants";
 
 const UserSummary = () => {
   const [userData, setUserData] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const getUser = async () => {
     try {
@@ -25,9 +25,9 @@ const UserSummary = () => {
     }
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   return (
     <div className="container mx-auto mt-4">

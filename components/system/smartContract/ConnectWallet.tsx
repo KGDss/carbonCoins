@@ -9,8 +9,14 @@ const ConnectWallet = () => {
   const { connectWallet } = useWallet();
   const { username } = useAuth();
   const handleClick = async () => {
-    if (username) await connectWallet(username);
-    else await connectWallet("User");
+    console.log("heeloo");
+    if (username) {
+      await connectWallet(username);
+    } else {
+      console.log("using this");
+
+      await connectWallet("User");
+    }
   };
 
   return (

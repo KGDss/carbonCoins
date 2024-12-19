@@ -27,8 +27,7 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({
   const [balance, setBalance] = useState<number>(0);
   const [signer, setSigner] = useState<ethers.JsonRpcSigner | null>(null);
   const { wallet_address, id } = useAuth();
-
-  const isConnected = Boolean(walletAddress);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
 
   const connectWallet = async (username: string) => {
     if (typeof (window as any).ethereum !== "undefined") {
@@ -49,19 +48,20 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({
           MyTokenABI,
           signer
         );
+
         const balance = await contract.balanceOf(address);
         const total_coins = +ethers.formatEther(balance.toString());
 
-        if (wallet_address === null) {
-          console.log(address, balance);
-          await UserService.connectWalletFirstTime({
-            wallet_address: address,
-            total_coins,
-            id,
-            token: localStorage.getItem("token") ?? "",
-          });
-        }
+        // if (wallet_address === null) {
+        //   await UserService.connectWalletFirstTime({
+        //     wallet_address: address,
+        //     total_coins,
+        //     id,
+        //     token: localStorage.getItem("token") ?? "",
+        //   });
+        // }
 
+        setIsConnected(true);
         setWalletAddress(address);
         setSigner(signer);
         setBalance(+ethers.formatEther(balance.toString()));
