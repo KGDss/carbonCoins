@@ -1,19 +1,17 @@
-"use client"; // Ensure this component runs only on the client side
-
-import React, { useRef, useEffect, useState } from "react";
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Filler,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
-  Filler,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
 import zoomPlugin from "chartjs-plugin-zoom";
+import { useRef } from "react";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -37,13 +35,6 @@ const GraphPrice = ({
   height: string;
 }) => {
   const chartRef = useRef(null);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true); // Ensures the component renders only on the client
-  }, []);
-
-  if (!isClient) return null; // Prevent rendering on the server
 
   if (!timeSeries) return <div>Loading chart...</div>;
 
